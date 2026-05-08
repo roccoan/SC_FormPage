@@ -1,0 +1,106 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AppCTA from '../components/AppCTA.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date | string;
+  lastReviewed?: Date | string;
+  author?: string;
+  image?: string;
+  imageAlt?: string;
+  keywords?: string[];
+  slug: string;
+}
+
+const {
+  title,
+  description,
+  date,
+  lastReviewed,
+  author = 'Screening Clearing Editorial',
+  image,
+  imageAlt,
+  keywords = [],
+  slug,
+} = Astro.props;
+
+const canonicalURL = new URL(`/blog/${slug}`, Astro.site).href;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: new Date(date).toISOString(),
+  dateModified: new Date(lastReviewed ?? date).toISOString(),
+  author: { '@type': 'Organization', name: 'Screening Clearing' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Screening Clearing',
+    url: 'https://screeningclearing.com',
+  },
+  image: image ? new URL(image, Astro.site).href : undefined,
+  keywords: keywords.join(', '),
+  url: canonicalURL,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.key-takeaway', 'article > p:first-of-type'],
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  imageAlt={imageAlt}
+  type="article"
+  canonicalURL={canonicalURL}
+  jsonLd={articleJsonLd}
+>
+  <article class="max-w-2xl mx-auto px-4 py-16">
+    <header class="mb-10">
+      <div class="flex items-center gap-3 text-sm text-[#94a3b8] mb-4">
+        <time datetime={new Date(date).toISOString()}>
+          {new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        {lastReviewed && (
+          <>
+            <span>·</span>
+            <span>Last reviewed: {new Date(lastReviewed).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>
+          </>
+        )}
+      </div>
+      <h1 class="text-3xl md:text-4xl font-black text-[#f1f5f9] leading-tight mb-4">{title}</h1>
+      <p class="text-[#94a3b8] text-lg">{description}</p>
+    </header>
+
+    <div class="prose prose-invert prose-teal max-w-none
+      prose-headings:font-bold prose-headings:text-[#f1f5f9]
+      prose-p:text-[#cbd5e1] prose-p:leading-relaxed
+      prose-a:text-[#06b6d4] prose-a:no-underline hover:prose-a:underline
+      prose-strong:text-[#f1f5f9]
+      prose-li:text-[#cbd5e1]">
+      <slot />
+    </div>
+
+    <div class="mt-12">
+      <AppCTA />
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-[#1e293b]">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-[#0891b2] flex items-center justify-center text-white font-bold text-sm">SC</div>
+        <div>
+          <p class="text-[#f1f5f9] font-medium text-sm">{author}</p>
+          <p class="text-[#94a3b8] text-xs">Health education content for Screening Clearing</p>
+        </div>
+      </div>
+      <p class="mt-6 text-xs text-[#64748b] leading-relaxed p-4 bg-[#0d1424] rounded-lg border border-[#1e293b]">
+        <strong class="text-[#94a3b8]">Disclaimer:</strong> This article is for educational purposes only and does not constitute medical advice. Always consult your doctor or healthcare provider for personal medical decisions. Screening guidelines vary by country — check with your local health authority.
+      </p>
+    </footer>
+  </article>
+</BaseLayout>

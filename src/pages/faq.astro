@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const appFaqs = [
+  {
+    q: 'What is Screening Clearing?',
+    a: 'Screening Clearing is a free iOS and Android app that helps you track your personal health screening schedule. It organises your check-ups by status, sends reminders when screenings are due, and keeps your health history stored privately on your device.',
+  },
+  {
+    q: 'Is the app free?',
+    a: 'Yes, the core app is free. A premium upgrade unlocks unlimited custom exams and document storage. You can try all premium features free for the first 3 days after installing.',
+  },
+  {
+    q: 'Does the app require an account?',
+    a: 'No account is required. Screening Clearing works entirely offline and stores all data locally on your device. You never need to create a login or provide an email address.',
+  },
+  {
+    q: 'Is the app available for Android?',
+    a: 'Yes. Screening Clearing is available for both iOS (iPhone and iPad) and Android devices.',
+  },
+  {
+    q: 'What languages does the app support?',
+    a: 'Screening Clearing currently supports English and Italian. Additional languages are planned for future updates.',
+  },
+];
+
+const privacyFaqs = [
+  {
+    q: 'Where is my health data stored?',
+    a: 'All your data is stored exclusively on your device. Screening Clearing does not upload, transmit, or store any health information on external servers.',
+  },
+  {
+    q: 'Does Screening Clearing share my data with third parties?',
+    a: 'No. Your health data is never shared with third parties. The only external service the app uses is RevenueCat for in-app purchase processing, and no health data is involved in that process.',
+  },
+  {
+    q: 'What happens to my data if I delete the app?',
+    a: 'Deleting the app removes all data from your device. We recommend creating a backup first (Profile → Backup → Create Backup) if you want to preserve your history.',
+  },
+];
+
+const screeningFaqs = [
+  {
+    q: 'How does the app know which screenings I need?',
+    a: 'The app uses your age, gender, and smoker status to filter a built-in list of common preventive screenings. These are based on general health guidelines, not personalised medical advice. Your doctor may recommend different or additional screenings based on your individual health.',
+  },
+  {
+    q: 'How often should I get a general health check-up?',
+    a: 'Most health authorities recommend an annual or biennial general check-up for adults, depending on age and health status. Many guidelines suggest more frequent check-ups after age 40 or 50. Always check with your doctor for a recommendation tailored to you.',
+  },
+  {
+    q: 'Is the app suitable for people with chronic conditions?',
+    a: 'Screening Clearing is designed for general preventive screenings for healthy adults. People with chronic conditions typically have more frequent, specialised monitoring requirements that should be managed in coordination with their healthcare provider.',
+  },
+  {
+    q: 'Can I add screenings that are not in the default list?',
+    a: 'Yes. The Manage Exams tab lets you add custom check-ups with any name and frequency. One custom exam is included in the free plan; unlimited custom exams are available with premium.',
+  },
+  {
+    q: 'Do screening guidelines differ between countries?',
+    a: 'Yes, screening recommendations vary by country and health authority. The default list in Screening Clearing is based on widely-used European and international guidelines, but your local health system may have different recommendations. Always consult your doctor or national health service.',
+  },
+];
+
+const pricingFaqs = [
+  {
+    q: 'What does the premium upgrade include?',
+    a: 'Premium includes unlimited custom exams, the ability to scan and store medical documents attached to check-up records, and a detailed score breakdown. It is available as an annual subscription or a one-time lifetime purchase.',
+  },
+  {
+    q: 'Is there a free trial for premium?',
+    a: 'Yes. All premium features are available free for the first 3 days after you install the app, with no payment required.',
+  },
+  {
+    q: 'How do I cancel my subscription?',
+    a: 'Subscriptions are managed through your App Store (iOS) or Google Play (Android) account. Go to your device settings → subscriptions to cancel at any time. You retain premium access until the end of the billing period.',
+  },
+];
+---
+
+<BaseLayout
+  title="Frequently Asked Questions"
+  description="Answers to common questions about Screening Clearing — the free health screening tracker app for iOS and Android."
+>
+  <div class="max-w-3xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Frequently Asked Questions</h1>
+    <p class="text-[#94a3b8] mb-12">Common questions about the app, your data, and how health screenings work.</p>
+
+    <FAQSection items={appFaqs} title="About the App" />
+    <FAQSection items={privacyFaqs} title="Privacy & Data" />
+    <FAQSection items={screeningFaqs} title="Health Screenings" />
+    <FAQSection items={pricingFaqs} title="Pricing & Premium" />
+  </div>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<BaseLayout
+  title="Health Screening Blog"
+  description="Educational articles on health screenings, prevention schedules, and how to stay on top of your check-ups. Evidence-based guides for adults."
+>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Health Screening Blog</h1>
+    <p class="text-[#94a3b8] mb-12">Educational guides on preventive health check-ups.</p>
+
+    {posts.length === 0 ? (
+      <div class="text-center py-20 text-[#64748b]">
+        <p class="text-lg">Articles coming soon.</p>
+      </div>
+    ) : (
+      <div class="grid md:grid-cols-2 gap-6">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group bg-[#0d1424] border border-[#1e293b] hover:border-[#0891b2] rounded-2xl p-6 transition-colors block"
+          >
+            <div class="flex items-center gap-2 text-xs text-[#64748b] mb-3">
+              <span class="capitalize bg-[#1e293b] px-2 py-0.5 rounded">{post.data.type}</span>
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+            </div>
+            <h2 class="text-[#f1f5f9] font-bold text-lg mb-2 group-hover:text-[#06b6d4] transition-colors leading-snug">
+              {post.data.title}
+            </h2>
+            <p class="text-[#94a3b8] text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

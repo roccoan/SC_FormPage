@@ -1,0 +1,226 @@
+[
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "30",
+        "screening_name": "Autopalpazione del seno",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Visita Cardiologica",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "25",
+        "max_age": "29",
+        "frequency": "1095",
+        "screening_name": "PAP Test",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Mappatura dei Nei",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "20",
+        "max_age": "39",
+        "frequency": "1825",
+        "screening_name": "Visita Oculistica",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Esami del Sangue (di routine)",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Pulizia dei Denti",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Visita Cardiologica",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Mappatura dei Nei",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "20",
+        "max_age": "39",
+        "frequency": "1825",
+        "screening_name": "Visita Oculistica",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "30",
+        "screening_name": "Autopalpazione dei testicoli",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Esami del Sangue (di routine)",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "20",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Pulizia dei Denti",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "30",
+        "max_age": "64",
+        "frequency": "1825",
+        "screening_name": "HPV Test (30-65 anni)",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "40",
+        "max_age": "64",
+        "frequency": "730",
+        "screening_name": "Visita Oculistica",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "30",
+        "max_age": "39",
+        "frequency": "365",
+        "screening_name": "Ecografia Mammaria",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "40",
+        "max_age": "49",
+        "frequency": "365",
+        "screening_name": "Mammografia",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "40",
+        "max_age": "64",
+        "frequency": "730",
+        "screening_name": "Visita Oculistica",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "50",
+        "max_age": "70",
+        "frequency": "730",
+        "screening_name": "Mammografia",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "50",
+        "max_age": "75",
+        "frequency": "730",
+        "screening_name": "Test del Sangue Occulto nelle Feci",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "50",
+        "max_age": "80",
+        "frequency": "730",
+        "screening_name": "MOC",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "50",
+        "max_age": "150",
+        "frequency": "1825",
+        "screening_name": "Test dell'udito",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "50",
+        "max_age": "75",
+        "frequency": "730",
+        "screening_name": "Test del Sangue Occulto nelle Feci",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "50",
+        "max_age": "150",
+        "frequency": "1825",
+        "screening_name": "Test dell'udito",
+        "for_smokers": "0",
+        "gender": "M"
+    },
+    {
+        "min_age": "55",
+        "max_age": "75",
+        "frequency": "365",
+        "screening_name": "TC Basso Dosaggio (Fumatrici)",
+        "for_smokers": "1",
+        "gender": "F"
+    },
+    {
+        "min_age": "55",
+        "max_age": "75",
+        "frequency": "365",
+        "screening_name": "TC Basso Dosaggio (Fumatori)",
+        "for_smokers": "1",
+        "gender": "M"
+    },
+    {
+        "min_age": "65",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Visita Oculistica",
+        "for_smokers": "0",
+        "gender": "F"
+    },
+    {
+        "min_age": "65",
+        "max_age": "150",
+        "frequency": "365",
+        "screening_name": "Visita Oculistica",
+        "for_smokers": "0",
+        "gender": "M"
+    }
+]

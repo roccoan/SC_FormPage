@@ -1,0 +1,58 @@
+---
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  title?: string;
+  jsonLd?: boolean;
+}
+
+const { items, title = 'Frequently Asked Questions', jsonLd = true } = Astro.props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+---
+
+{jsonLd && (
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+)}
+
+<section class="py-16">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-black text-[#f1f5f9] mb-10">{title}</h2>
+    <div class="space-y-4">
+      {items.map((item, i) => (
+        <details
+          class="group border border-[#1e293b] rounded-xl bg-[#0d1424] overflow-hidden"
+          open={i === 0}
+        >
+          <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer text-[#f1f5f9] font-semibold text-sm md:text-base list-none select-none hover:text-[#06b6d4] transition-colors">
+            {item.q}
+            <svg
+              class="w-5 h-5 shrink-0 text-[#0891b2] transition-transform group-open:rotate-180"
+              viewBox="0 0 20 20" fill="currentColor"
+            >
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-[#94a3b8] text-sm md:text-base leading-relaxed">
+            {item.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const supportFaqs = [
+  {
+    q: 'How do I add a custom health check-up?',
+    a: 'Go to the Manage Exams tab and tap the + button. Enter a name and frequency in days. Custom check-ups appear on your home screen like built-in ones. One custom exam is free; unlimited custom exams are available with a premium upgrade.',
+  },
+  {
+    q: 'How do I mark a check-up as done?',
+    a: 'Tap any check-up card on the Home tab. You can select a quick date (7, 14, 30, 90, or 180 days ago) or pick a custom date. The app will update your schedule and reschedule your reminders automatically.',
+  },
+  {
+    q: 'How do I back up my data?',
+    a: 'Go to Profile → Backup → Create Backup. The app creates a .scb file you can save to Files, iCloud, or share anywhere. To restore, go to Profile → Backup → Restore Backup and select your file.',
+  },
+  {
+    q: 'Why am I not receiving notifications?',
+    a: 'Make sure notifications are enabled both in the app (Profile → Notifications) and in your device Settings → Notifications → Screening Clearing. Notifications are scheduled locally on your device.',
+  },
+  {
+    q: 'How do I change the screening reminder timing?',
+    a: 'Go to Profile → Notifications. You can set how many days before a check-up is due you want to be reminded, and what time of day notifications should appear.',
+  },
+  {
+    q: 'Can I change my birth date after setup?',
+    a: 'Your birth date is used to calculate which screenings are relevant for your age and cannot be changed after initial setup. If you set an incorrect birth date, use Profile → Reset Data to start fresh.',
+  },
+  {
+    q: 'What is the premium upgrade?',
+    a: 'Premium unlocks unlimited custom exams, document storage (scan and attach reports to check-ups), and score breakdown details. It is available as an annual subscription or a one-time lifetime purchase.',
+  },
+  {
+    q: 'How do I restore my purchase?',
+    a: 'Go to Profile → Premium → Restore Purchases. This reconnects your App Store or Google Play purchase to the app.',
+  },
+  {
+    q: 'The app shows check-ups that do not apply to me. What should I do?',
+    a: 'The app filters check-ups based on your age, gender, and smoker status. Go to Profile and verify these are set correctly. You can also disable any specific check-up from the Manage Exams tab.',
+  },
+  {
+    q: 'How do I contact support?',
+    a: 'Email us at screeningclearing@gmail.com. We typically respond within 2 business days.',
+  },
+];
+---
+
+<BaseLayout
+  title="Support"
+  description="Get help with Screening Clearing. Find answers to common questions about the app, notifications, backup, and premium features."
+>
+  <div class="max-w-3xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Support</h1>
+    <p class="text-[#94a3b8] mb-12">
+      Need help? Browse the FAQ below or email us at{' '}
+      <a href="mailto:screeningclearing@gmail.com" class="text-[#06b6d4] hover:underline">
+        screeningclearing@gmail.com
+      </a>.
+    </p>
+
+    <FAQSection items={supportFaqs} title="Help & FAQ" />
+  </div>
+</BaseLayout>

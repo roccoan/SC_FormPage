@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  canonicalURL?: string;
+  noindex?: boolean;
+  jsonLd?: object | object[];
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-default.jpg',
+  imageAlt = 'Screening Clearing — health screening tracker app',
+  type = 'website',
+  canonicalURL = Astro.url.href,
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
+const COOKIEBOT_ID = import.meta.env.PUBLIC_COOKIEBOT_ID;
+
+const fullTitle = title === 'Screening Clearing'
+  ? title
+  : `${title} | Screening Clearing`;
+
+const jsonLdArray = jsonLd
+  ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd])
+  : [];
+---
+
+<!doctype html>
+<html lang={Astro.currentLocale ?? 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:site_name" content="Screening Clearing" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site).href} />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="en" href={Astro.url.href} />
+    <link rel="alternate" hreflang="it" href={new URL('/it' + Astro.url.pathname, Astro.site).href} />
+    <link rel="alternate" hreflang="x-default" href={Astro.url.href} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Cookiebot consent (blocks GA4 until consent) -->
+    {COOKIEBOT_ID && (
+      <script
+        id="Cookiebot"
+        src="https://consent.cookiebot.com/uc.js"
+        data-cbid={COOKIEBOT_ID}
+        data-blockingmode="auto"
+        type="text/javascript"
+      />
+    )}
+
+    <!-- Google Analytics 4 (blocked by Cookiebot until statistics consent) -->
+    {GA_ID && (
+      <>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          data-cookieconsent="statistics"
+        />
+        <script data-cookieconsent="statistics" define:vars={{ GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+        </script>
+      </>
+    )}
+
+    <!-- JSON-LD structured data -->
+    {jsonLdArray.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Nav />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

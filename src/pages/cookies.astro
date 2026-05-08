@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const COOKIEBOT_ID = import.meta.env.PUBLIC_COOKIEBOT_ID;
+---
+
+<BaseLayout
+  title="Cookie Policy"
+  description="Cookie policy for screeningclearing.com. We use analytics cookies only with your consent."
+>
+  <article class="max-w-2xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-black text-[#f1f5f9] mb-2">Cookie Policy</h1>
+    <p class="text-[#64748b] text-sm mb-10">This website only.</p>
+
+    <div class="prose prose-invert prose-teal max-w-none prose-p:text-[#cbd5e1] prose-headings:text-[#f1f5f9] prose-a:text-[#06b6d4]">
+
+      <h2>What are cookies?</h2>
+      <p>Cookies are small text files stored on your device by your browser. This policy applies only to screeningclearing.com — the Screening Clearing mobile app does not use cookies.</p>
+
+      <h2>Cookies we use</h2>
+      <p><strong>Strictly necessary cookies</strong> — Required for the site to function. No consent needed.</p>
+      <p><strong>Statistics cookies (Google Analytics 4)</strong> — Used to understand how visitors use this website. Only enabled with your consent. No personal health data is collected.</p>
+
+      <h2>Your choices</h2>
+      <p>You can change your cookie preferences at any time using the button below.</p>
+
+      {COOKIEBOT_ID ? (
+        <a href="javascript:Cookiebot.renew()" class="inline-block bg-[#0891b2] text-white font-semibold px-5 py-2.5 rounded-lg text-sm hover:bg-[#06b6d4] transition-colors no-underline">
+          Manage Cookie Preferences
+        </a>
+      ) : (
+        <p class="text-[#64748b] text-sm italic">Cookie preferences manager will appear here once Cookiebot is configured.</p>
+      )}
+
+      <h2>Cookie declaration</h2>
+      {COOKIEBOT_ID ? (
+        <script id="CookieDeclaration" src={`https://consent.cookiebot.com/${COOKIEBOT_ID}/cd.js`} type="text/javascript" async />
+      ) : (
+        <p class="text-[#64748b] text-sm italic">Full cookie declaration will appear here once Cookiebot is configured.</p>
+      )}
+
+      <h2>Contact</h2>
+      <p>For cookie-related questions: <a href="mailto:screeningclearing@gmail.com">screeningclearing@gmail.com</a></p>
+    </div>
+  </article>
+</BaseLayout>
