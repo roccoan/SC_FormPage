@@ -1,0 +1,102 @@
+---
+title: "Why Your Health Data Should Never Leave Your Phone"
+description: "Health apps often collect and store more data than you realise. Here's what local-only storage means, why it matters, and how to choose a health app that keeps your data private."
+date: 2026-05-09
+lastReviewed: 2026-05-09
+author: "Screening Clearing Editorial"
+image: "/images/blog/health-data-privacy-phone.jpg"
+imageAlt: "Smartphone showing a health app with a privacy lock icon, representing local-only health data storage"
+tags: ["privacy", "health data", "app", "local storage"]
+keywords: ["health data privacy app", "offline health app", "private health records phone", "health app no account"]
+type: "feature"
+slug: "health-data-privacy-phone"
+readingTime: "5 min read"
+disclaimer: true
+speakable: true
+---
+
+import KeyTakeaway from '../../components/KeyTakeaway.astro';
+import FAQ from '../../components/FAQ.astro';
+import AppCTA from '../../components/AppCTA.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+import Sources from '../../components/Sources.astro';
+
+<KeyTakeaway>
+Most health apps send your data to a server — even when that isn't obvious from the interface. Local-only storage means your health information stays on your device, is never transmitted to a company's servers, and is never used for advertising, research, or any other purpose. For something as personal as health data, that distinction is worth understanding before you choose an app.
+</KeyTakeaway>
+
+Health data is different from other personal data. It's more sensitive. It can affect insurance, employment, and relationships. It can reveal things about your family, not just yourself. And once it leaves your device, you have limited control over where it goes or how long it stays.
+
+This isn't a reason to avoid digital health tools. It's a reason to understand what a given app actually does with your information before you trust it with anything personal.
+
+## What most health apps do with your data
+
+The default model for most apps — health or otherwise — is server-side storage. When you log a check-up, enter a symptom, or set a reminder, that data is transmitted to a central server operated by the company. This enables features like cross-device sync, cloud backup, and account recovery. It also means the company holds your data.
+
+What happens next depends on the company, its business model, its privacy policy, and the jurisdiction it operates under. Some apps use health data for product improvement, which may mean aggregated analysis. Others share anonymised data with third parties for research. Some are acquired by larger companies whose data practices differ from the original developer's.
+
+Privacy policies exist, but they're written to be legally compliant, not practically informative. Reading them carefully tells you what is permitted — not necessarily what is happening. And "anonymised" data is less anonymous than it sounds: health records have been repeatedly re-identified from supposedly anonymised datasets.
+
+None of this makes every health app dangerous. It's a landscape with a wide range of practices. The point is simply that you should know what you're opting into.
+
+## What local-only storage actually means
+
+Local-only storage is the alternative model. No server. No account. No transmission of your data anywhere.
+
+When a health app stores data locally, everything you enter stays in your device's protected storage — the same sandboxed environment that protects banking apps and password managers. The developer has no access to it. There's no central database where your information sits alongside other users' data. If the company behind the app were acquired, investigated, or hacked, your data would not be involved, because it was never held by them in the first place.
+
+The trade-off is equally real: there's no cloud backup, no cross-device sync, and no account recovery if you lose your phone. Local-only storage is a deliberate choice — prioritising privacy over convenience features that require data to leave the device.
+
+For a general productivity app, this trade-off might not be worth it. For something tracking your screening history, test results, and health timeline, the calculation is different.
+
+## Why this matters specifically for health data
+
+Health information has a permanence that most other data doesn't. A list of your check-ups, your test dates, your medical history — this data doesn't become less sensitive over time. It becomes more sensitive, because it compounds. A single data point is a piece of information. A timeline of health events is a profile.
+
+GDPR in Europe and various US state privacy laws recognise health data as a special category requiring stronger protection. But legal protections are a floor, not a ceiling. They establish what companies must do; they don't stop companies from doing things they're permitted to do.
+
+Choosing an app with local-only storage is a way of removing the question entirely. If the data isn't held by anyone other than you, there's nothing to regulate, share, or breach.
+
+## How Screening Clearing approaches this
+
+Screening Clearing is a free iOS and Android app for tracking personal health screening schedules. It stores all data on your device — no account is required, no data is sent to any server, and no personal information is collected. The app has no backend database. It cannot access your data, and neither can anyone else.
+
+This is described in full in the [privacy policy](/privacy/), which separates clearly how the website handles analytics (via consent-gated Google Analytics) from how the app handles your health data — which is to say, it doesn't.
+
+There's no hidden upside to this for us. Local-only storage means we have less data than apps that collect it. It also means users can trust the app with something genuinely personal — which is the only foundation worth building on.
+
+For a full picture of what screenings are relevant to your age and profile, [our adult screening guide](/blog/health-screening-guide-adults) covers what's recommended by decade. You can find answers to common questions about both the app and the website at [our FAQ](/faq/).
+
+<FAQ items={[
+  {
+    q: "Is it safe to store health data on my phone?",
+    a: "Modern smartphones use encrypted, sandboxed storage for app data — the same protection used by banking and payment apps. Data stored locally on your device is not accessible to other apps, and is protected by your device passcode or biometric lock. The risk profile is very different from cloud storage, where data is held on a server outside your control."
+  },
+  {
+    q: "What does 'no account required' mean in practice?",
+    a: "It means you can use the app without creating a profile, providing an email address, or authenticating with a third-party service. There's no username or password to manage, and no recovery process if you lose your phone — because there's no account on the other end. Your data exists only on your device."
+  },
+  {
+    q: "What happens to my data if I delete the app?",
+    a: "When you delete a local-only app, all data stored by that app is deleted with it. Nothing is retained on a server, because nothing was ever sent there. This is both the advantage (complete control) and the limitation (no backup) of local-only storage."
+  },
+  {
+    q: "How do I know if a health app stores my data on a server?",
+    a: "Look for account creation as part of setup — if an app requires you to sign up, your data is almost certainly server-side. Check the privacy policy for terms like 'we collect', 'we store', 'third-party partners', or 'data processing'. If the app offers cross-device sync or account recovery, it holds your data on a server. Genuine local-only apps will typically state this explicitly in their privacy policy and won't require an account."
+  },
+  {
+    q: "Can I trust health apps that do use server-side storage?",
+    a: "Many reputable health apps use server-side storage with appropriate security and privacy protections — encrypted transit, clear data policies, GDPR compliance. The question isn't whether server-side storage is categorically bad, but whether the specific app's practices match what you're comfortable with for sensitive health information. Reading the privacy policy, checking whether the company has had data incidents, and understanding their business model are all reasonable steps."
+  }
+]} />
+
+<AppCTA
+  title="Your health history. On your phone. Nowhere else."
+  subtitle="Screening Clearing is a free iOS and Android app for tracking personal health screening schedules. No account. No server. No data collected. Everything stays on your device."
+/>
+
+<AuthorBio />
+
+<Sources items={[
+  { author: "Screening Clearing", title: "Privacy Policy", year: 2026, url: "https://screeningclearing.com/privacy/" }
+]} />

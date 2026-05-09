@@ -41,7 +41,7 @@ const slides = [
               {slides.map((slide, i) => (
                 <img
                   src={slide.image}
-                  alt={`App screen ${i + 1}`}
+                  alt={slide.caption.slice(0, 80)}
                   class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
                   style={`opacity: ${i === 0 ? '1' : '0'}; z-index: ${i === 0 ? '1' : '0'};`}
                   data-slide={i}
@@ -153,5 +153,10 @@ const slides = [
 
   document.querySelectorAll('[data-dot]').forEach((btn) => {
     btn.addEventListener('click', () => goTo(parseInt((btn as HTMLElement).dataset.dot ?? '0')));
+  });
+
+  document.getElementById('showcase')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'ArrowLeft') goTo(current - 1);
+    if ((e as KeyboardEvent).key === 'ArrowRight') goTo(current + 1);
   });
 </script>

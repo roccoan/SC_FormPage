@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
   <div class="max-w-6xl mx-auto px-4 py-12">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
       <div class="col-span-2 md:col-span-1">
-        <a href="/" class="flex items-center gap-2 font-bold text-[#f1f5f9] mb-3">
+        <a href="/" aria-label="Screening Clearing – home" class="flex items-center gap-2 font-bold text-[#f1f5f9] mb-3">
           <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
             <rect width="28" height="28" rx="8" fill="#0891b2"/>
             <path d="M14 6v16M6 14h16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
@@ -18,28 +18,28 @@ const year = new Date().getFullYear();
         </p>
       </div>
 
-      <div>
+      <nav aria-label="App links">
         <p class="text-[#f1f5f9] font-semibold text-sm mb-3">App</p>
         <ul class="space-y-2 text-sm text-[#64748b]">
           <li><a href="/faq" class="hover:text-[#94a3b8] transition-colors">FAQ</a></li>
           <li><a href="/support" class="hover:text-[#94a3b8] transition-colors">Support</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <div>
+      <nav aria-label="Content links">
         <p class="text-[#f1f5f9] font-semibold text-sm mb-3">Content</p>
         <ul class="space-y-2 text-sm text-[#64748b]">
           <li><a href="/blog" class="hover:text-[#94a3b8] transition-colors">Blog</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <div>
+      <nav aria-label="Legal links">
         <p class="text-[#f1f5f9] font-semibold text-sm mb-3">Legal</p>
         <ul class="space-y-2 text-sm text-[#64748b]">
           <li><a href="/privacy" class="hover:text-[#94a3b8] transition-colors">Privacy Policy</a></li>
           <li><a href="/cookies" class="hover:text-[#94a3b8] transition-colors">Cookie Policy</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
     <div class="border-t border-[#1e293b] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">

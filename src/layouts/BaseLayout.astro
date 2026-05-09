@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import ExitIntent from '../components/ExitIntent.astro';
 
 interface Props {
   title: string;
@@ -66,7 +67,6 @@ const jsonLdArray = jsonLd
 
     <!-- hreflang -->
     <link rel="alternate" hreflang="en" href={Astro.url.href} />
-    <link rel="alternate" hreflang="it" href={new URL('/it' + Astro.url.pathname, Astro.site).href} />
     <link rel="alternate" hreflang="x-default" href={Astro.url.href} />
 
     <!-- Favicon -->
@@ -116,5 +116,6 @@ const jsonLdArray = jsonLd
       <slot />
     </main>
     <Footer />
+    <ExitIntent />
   </body>
 </html>

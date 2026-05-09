@@ -12,15 +12,15 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      i18n: {
-        defaultLocale: 'en',
-        locales: { en: 'en-US', it: 'it-IT' },
+      serialize(item) {
+        const url = item.url;
+        if (url === 'https://screeningclearing.com/') return { ...item, changefreq: 'weekly', priority: 1.0 };
+        if (url.includes('/am-i-due'))                return { ...item, changefreq: 'weekly', priority: 0.9 };
+        if (url.includes('/blog/') && !url.endsWith('/blog/')) return { ...item, changefreq: 'monthly', priority: 0.8 };
+        if (url.includes('/blog'))                    return { ...item, changefreq: 'weekly', priority: 0.7 };
+        if (url.includes('/privacy') || url.includes('/cookies')) return { ...item, changefreq: 'yearly', priority: 0.2 };
+        return { ...item, changefreq: 'monthly', priority: 0.5 };
       },
     }),
   ],
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'it'],
-    routing: { prefixDefaultLocale: false },
-  },
 });

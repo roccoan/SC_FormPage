@@ -1,0 +1,682 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Am I Due for a Health Screening?',
+  url: 'https://screeningclearing.com/am-i-due',
+  description: 'Answer a few quick questions and see which health screenings you may be missing. Takes 2 minutes — use it as a starting point for your next doctor visit.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Screening Clearing',
+    url: 'https://screeningclearing.com',
+  },
+};
+---
+
+<BaseLayout
+  title="Am I Due for a Health Screening?"
+  description="Answer a few quick questions and see which health screenings you may be missing. Takes 2 minutes — use it as a starting point for your next doctor visit."
+  jsonLd={jsonLd}
+>
+  <div class="quiz-bg min-h-screen">
+    <div class="max-w-lg mx-auto px-4 py-12" id="start">
+
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <h1 class="text-5xl font-black text-white mb-4 leading-tight">Am I Due?</h1>
+        <p class="text-white/80 text-lg font-medium mb-3 leading-snug">
+          Most adults are behind on at least one health screening — and don't know it.
+        </p>
+        <p class="text-white/50 text-sm mb-6 leading-relaxed max-w-sm mx-auto">
+          Answer 4 quick questions. Find out which preventive checks you may be missing, and how the <strong class="text-white/80">Screening Clearing app</strong> can keep you on track — automatically.
+        </p>
+        <p class="inline-flex items-center gap-2 text-xs text-white/60 bg-white/8 border border-white/20 rounded-full px-4 py-2 font-medium">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1C8.676 1 6 3.676 6 7v1H4v15h16V8h-2V7c0-3.324-2.676-6-6-6zm0 2c2.276 0 4 1.724 4 4v1H8V7c0-2.276 1.724-4 4-4zm0 9a2 2 0 110 4 2 2 0 010-4z"/></svg>
+          Your answers are never collected or stored — this is a preview of the app
+        </p>
+      </div>
+
+      <!-- Progress Bar -->
+      <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Quiz progress" class="quiz-track rounded-full h-1.5 mb-8">
+        <div id="progress-bar" class="h-full rounded-full bg-white transition-all duration-500" style="width:0%"></div>
+      </div>
+
+      <!-- ── STEP 1: Question cards ── -->
+      <div id="step1">
+
+        <!-- Q1: Health feeling (ice-breaker) -->
+        <div id="q-feeling" class="quiz-card rounded-3xl p-8 card-enter">
+          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 1 of 4</p>
+          <h2 class="text-2xl font-black text-white mb-2">How do you feel about your health right now?</h2>
+          <p class="text-white/50 text-sm mb-8">Be honest — there's no wrong answer.</p>
+          <fieldset class="space-y-3 border-0 p-0 m-0">
+            <legend class="sr-only">How do you feel about your health right now?</legend>
+            <button type="button" class="card-btn-option w-full py-4 px-5 rounded-xl font-semibold text-left text-base flex items-center gap-3" data-feeling="great" id="btn-feeling-great">
+              <span class="text-2xl" aria-hidden="true">💪</span>
+              <span>Pretty good — I feel on top of it</span>
+            </button>
+            <button type="button" class="card-btn-option w-full py-4 px-5 rounded-xl font-semibold text-left text-base flex items-center gap-3" data-feeling="could-be-better" id="btn-feeling-meh">
+              <span class="text-2xl" aria-hidden="true">🤔</span>
+              <span>Could be better, honestly</span>
+            </button>
+            <button type="button" class="card-btn-option w-full py-4 px-5 rounded-xl font-semibold text-left text-base flex items-center gap-3" data-feeling="no-idea" id="btn-feeling-unsure">
+              <span class="text-2xl" aria-hidden="true">🌱</span>
+              <span>I'm not sure where to start</span>
+            </button>
+          </fieldset>
+        </div>
+
+        <!-- Q2: Age drum picker -->
+        <div id="q-age" class="quiz-card rounded-3xl p-8 card-enter hidden">
+          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 2 of 4</p>
+          <h2 class="text-2xl font-black text-white mb-2">How old are you?</h2>
+          <p class="text-white/50 text-sm mb-6">Scroll the wheel to your age group.</p>
+
+          <div class="drum-wrapper relative mx-auto" style="max-width:280px">
+            <div class="drum-fade-top    absolute top-0    left-0 right-0 z-10 pointer-events-none" style="height:80px"></div>
+            <div class="drum-fade-bottom absolute bottom-0 left-0 right-0 z-10 pointer-events-none" style="height:80px"></div>
+            <div class="absolute left-0 right-0 z-10 pointer-events-none rounded-xl"
+                 style="top:50%;transform:translateY(-50%);height:52px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25)"></div>
+            <div id="drum-list" role="listbox" aria-label="Select your age group" tabindex="0"
+                 style="height:208px;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-snap-stop:always;scrollbar-width:none;-webkit-overflow-scrolling:touch">
+              <div style="height:78px;scroll-snap-align:none;pointer-events:none"></div>
+              <div class="drum-item" data-value="0-19">0 – 19 years</div>
+              <div class="drum-item" data-value="20-29">20 – 29 years</div>
+              <div class="drum-item" data-value="30-39">30 – 39 years</div>
+              <div class="drum-item" data-value="40-49">40 – 49 years</div>
+              <div class="drum-item" data-value="50-59">50 – 59 years</div>
+              <div class="drum-item" data-value="60-69">60 – 69 years</div>
+              <div class="drum-item" data-value="70-79">70 – 79 years</div>
+              <div class="drum-item" data-value="80-150">80+ years</div>
+              <div style="height:78px;scroll-snap-align:none;pointer-events:none"></div>
+            </div>
+          </div>
+
+          <button type="button" id="btn-age-continue"
+                  class="mt-8 w-full bg-white text-indigo-700 font-bold py-4 rounded-xl hover:bg-white/90 active:scale-95 transition-all">
+            Continue →
+          </button>
+        </div>
+
+        <!-- Q3: Sex assigned at birth -->
+        <div id="q-gender" class="quiz-card rounded-3xl p-8 card-enter hidden">
+          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 3 of 4</p>
+          <h2 class="text-2xl font-black text-white mb-2">What was your sex assigned at birth?</h2>
+          <fieldset class="border-0 p-0 m-0">
+            <legend class="sr-only">Sex assigned at birth</legend>
+            <div class="grid grid-cols-2 gap-4 mb-3">
+              <button type="button" class="card-btn-option py-5 rounded-xl font-bold text-base" data-gender="M" id="btn-male">
+                <span class="block text-2xl mb-1" aria-hidden="true">♂</span> Male
+              </button>
+              <button type="button" class="card-btn-option py-5 rounded-xl font-bold text-base" data-gender="F" id="btn-female">
+                <span class="block text-2xl mb-1" aria-hidden="true">♀</span> Female
+              </button>
+            </div>
+            <button type="button" class="card-btn-option w-full py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2" data-gender="N" id="btn-other">
+              <span class="text-xl" aria-hidden="true">⚧</span> I've transitioned / Other
+            </button>
+          </fieldset>
+          <!-- inline note for "Other" — hidden until tapped -->
+          <div id="gender-other-note" class="hidden mt-5 rounded-xl p-4 text-sm leading-relaxed"
+               style="background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3)">
+            <p class="text-white/80 mb-3">We'll show you general screenings that apply broadly. For a fully personalised schedule, the Screening Clearing app lets you track any exam manually — on your own terms.</p>
+            <button id="btn-other-continue" type="button"
+                    class="text-indigo-300 font-semibold text-sm hover:text-white transition-colors">
+              Got it, continue →
+            </button>
+          </div>
+        </div>
+
+        <!-- Q4: Smoker -->
+        <div id="q-smoker" class="quiz-card rounded-3xl p-8 card-enter hidden">
+          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 4 of 4</p>
+          <h2 class="text-2xl font-black text-white mb-2">Do you smoke?</h2>
+          <p class="text-white/50 text-sm mb-8">Some screenings are specifically recommended for smokers.</p>
+          <fieldset class="border-0 p-0 m-0">
+            <legend class="sr-only">Do you smoke?</legend>
+            <div class="grid grid-cols-2 gap-4">
+              <button type="button" class="card-btn-option py-5 rounded-xl font-bold text-base" data-smoker="1" id="btn-smoker-yes">
+                <span class="block text-2xl mb-1" aria-hidden="true">🚬</span> Yes
+              </button>
+              <button type="button" class="card-btn-option py-5 rounded-xl font-bold text-base" data-smoker="0" id="btn-smoker-no">
+                <span class="block text-2xl mb-1" aria-hidden="true">🚭</span> No
+              </button>
+            </div>
+          </fieldset>
+          <button type="button" id="smoker-info"
+                  class="mt-4 text-white/30 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
+            What counts as a smoker?
+          </button>
+        </div>
+
+      </div><!-- /step1 -->
+
+      <!-- ── STEP 2: Card-by-card exams ── -->
+      <div id="step2" class="hidden">
+        <div class="flex items-center justify-between mb-6">
+          <span id="card-counter" class="text-white/50 text-sm font-medium">Card 1 of 5</span>
+          <span id="due-live" class="text-sm font-semibold px-3 py-1 rounded-full"
+                style="background:rgba(239,68,68,0.15);color:#fca5a5">0 may be due</span>
+        </div>
+
+        <div class="relative" style="min-height:300px">
+          <div class="quiz-card rounded-3xl absolute inset-0" style="transform:translateY(12px) scale(0.95);opacity:0.25"></div>
+          <div class="quiz-card rounded-3xl absolute inset-0" style="transform:translateY(6px) scale(0.975);opacity:0.45"></div>
+          <div id="active-card" class="quiz-card rounded-3xl p-8 relative z-10 card-enter">
+            <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-4">Check #<span id="card-num">1</span></p>
+            <h2 id="card-name"     class="text-2xl font-black text-white mb-3 leading-tight"></h2>
+            <p id="card-question"  class="text-white/70 text-base mb-8"></p>
+            <div class="grid grid-cols-2 gap-4">
+              <button id="btn-yes" type="button" aria-label="Yes, I have done this screening" class="card-btn-yes py-4 rounded-xl font-bold text-base transition-all active:scale-95"><span aria-hidden="true">✓</span> Yes, I have</button>
+              <button id="btn-no"  type="button" aria-label="No, I have not done this screening" class="card-btn-no  py-4 rounded-xl font-bold text-base transition-all active:scale-95"><span aria-hidden="true">✗</span> Not really</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Results ── -->
+      <div id="step3" class="hidden space-y-6">
+
+        <div class="quiz-card rounded-3xl p-8 text-center space-y-3">
+          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest">Your result</p>
+          <div class="flex items-baseline justify-center gap-2">
+            <span id="due-count" class="text-7xl font-black score-number text-white">0</span>
+            <span class="text-white/60 text-xl font-semibold">screenings</span>
+          </div>
+          <p id="score-label" class="text-lg font-semibold"></p>
+          <p class="text-white/40 text-xs">may be missing from your schedule</p>
+          <div class="relative inline-block mt-1">
+            <button id="info-btn" type="button" aria-label="About these results" aria-expanded="false"
+              class="text-white/30 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
+              What do these results mean?
+            </button>
+            <div id="info-popover" class="hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-72 rounded-xl p-4 text-left text-xs space-y-2 z-20"
+                 style="background:rgba(0,20,60,0.98);border:1px solid rgba(255,255,255,0.15)">
+              <p class="text-white/80 leading-relaxed">Illustrative examples based on general guidelines — not a personal medical recommendation. Use them as a starting point for a conversation with your doctor.</p>
+              <p class="text-white/80 leading-relaxed">Studies show early detection improves 5-year survival rates for most common cancers by 5× or more.</p>
+              <div class="pt-2 border-t border-white/10 space-y-1">
+                <p class="text-white/40 font-semibold">Sources</p>
+                <a href="https://www.cancer.org" target="_blank" rel="noopener" class="block text-[#06b6d4] hover:underline">American Cancer Society</a>
+                <a href="https://www.who.int/health-topics/cancer" target="_blank" rel="noopener" class="block text-[#06b6d4] hover:underline">World Health Organization</a>
+                <a href="https://www.uspreventiveservicestaskforce.org" target="_blank" rel="noopener" class="block text-[#06b6d4] hover:underline">USPSTF</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden" style="background:rgba(8,145,178,0.15);border:1px solid rgba(8,145,178,0.35)">
+          <div class="flex items-end gap-0">
+            <!-- App screenshot -->
+            <div class="shrink-0 w-36 relative" style="margin-bottom:-4px">
+              <img
+                src="/images/1.png"
+                alt="Screening Clearing app home screen showing overdue exams"
+                class="w-full h-auto object-contain rounded-bl-2xl drop-shadow-xl"
+                width="280"
+                height="560"
+                loading="lazy"
+              />
+            </div>
+            <!-- Text + CTAs -->
+            <div class="flex-1 p-5 space-y-4">
+              <div>
+                <p id="cta-headline" class="text-white font-bold text-base leading-snug"></p>
+                <p class="text-white/55 text-xs mt-1 leading-relaxed">Track every screening and get reminded when you're due — automatically.</p>
+              </div>
+              <StoreBadges size="sm" />
+              <p class="text-white/30 text-xs">Always consult your doctor for personal medical decisions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="results-list" class="space-y-2"></div>
+
+        <button id="restart-btn" type="button"
+                class="w-full text-white/30 hover:text-white/60 font-medium py-3 rounded-xl transition-all text-sm border border-white/10 hover:border-white/20">
+          ← Try a different profile
+        </button>
+      </div>
+
+      <p class="text-center text-white/20 text-xs mt-8">General guidelines only · Not a substitute for medical advice</p>
+    </div>
+  </div>
+
+  <!-- Scroll toast -->
+  <div id="scroll-toast" class="fixed bottom-6 right-6 z-40 translate-y-24 opacity-0 transition-all duration-300 ease-out pointer-events-none">
+    <a href="#start" class="pointer-events-auto flex items-center gap-2 rounded-xl px-4 py-3 shadow-xl text-sm font-semibold text-white" style="background:#0891b2">
+      See your screening schedule →
+    </a>
+  </div>
+</BaseLayout>
+
+<style>
+  .quiz-bg   { background: linear-gradient(135deg,#000000,#00102b,#001c4a); }
+  .quiz-card { background: rgba(255,255,255,0.07); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.12); }
+  .quiz-track { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); }
+
+  /* Option buttons — step 1 */
+  .card-btn-option {
+    border: 2px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    transition: background 0.15s, border-color 0.15s, transform 0.08s;
+  }
+  .card-btn-option:focus { outline: none; }
+  .card-btn-option:focus-visible { outline: 2px solid #0891b2; outline-offset: 2px; }
+  .card-btn-option:hover  { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.35); }
+  .card-btn-option:active { transform: scale(0.97); }
+  .card-btn-option.picked {
+    background: #fff !important; color: #0f2a5e !important;
+    border-color: #fff; box-shadow: 0 4px 28px rgba(255,255,255,0.2);
+  }
+
+  /* Exam card buttons */
+  .card-btn-yes { background:rgba(16,185,129,0.15); border:2px solid rgba(52,211,153,0.3); color:#6ee7b7; font-weight:700; }
+  .card-btn-yes:hover { background:rgba(16,185,129,0.28); border-color:rgba(52,211,153,0.6); }
+  .card-btn-no  { background:rgba(239,68,68,0.10); border:2px solid rgba(252,165,165,0.25); color:#fca5a5; font-weight:700; }
+  .card-btn-no:hover  { background:rgba(239,68,68,0.22); border-color:rgba(252,165,165,0.5); }
+
+  /* Drum picker */
+  #drum-list::-webkit-scrollbar { display: none; }
+  .drum-item {
+    height: 52px;
+    scroll-snap-align: center;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 600;
+    color: rgba(255,255,255,0.28);
+    transition: color 0.12s, font-size 0.12s;
+    cursor: pointer; user-select: none;
+  }
+  .drum-item.active { color: #fff; font-size: 1.125rem; }
+  .drum-fade-top    { background: linear-gradient(to bottom, rgba(4,12,32,0.96) 0%, transparent 100%); }
+  .drum-fade-bottom { background: linear-gradient(to top,   rgba(4,12,32,0.96) 0%, transparent 100%); }
+
+  /* Card animations */
+  @keyframes cardEnter { from { opacity:0; transform:translateY(24px) scale(0.96); } to { opacity:1; transform:translateY(0) scale(1); } }
+  @keyframes cardExit  { from { opacity:1; transform:translateY(0) scale(1); } to { opacity:0; transform:translateY(-20px) scale(0.95); } }
+  .card-enter { animation: cardEnter 0.3s cubic-bezier(0.34,1.56,0.64,1) both; }
+  .card-exit  { animation: cardExit  0.2s ease-in both; }
+
+  @keyframes scorePopIn { 0% { transform:scale(0.4);opacity:0; } 70% { transform:scale(1.15); } 100% { transform:scale(1);opacity:1; } }
+  .score-pop { animation: scorePopIn 0.55s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+  @keyframes rowIn { from { opacity:0; transform:translateX(-12px); } to { opacity:1; transform:translateX(0); } }
+  .result-row { animation: rowIn 0.3s ease both; }
+</style>
+
+<script>
+  // ── Screening data ────────────────────────────────────────────────────────
+  const screeningData = [
+    { min_age:"20", max_age:"150", screening_name:"🤲 Breast Self-Exam",                    for_smokers:"0", gender:"F", frequency:30   },
+    { min_age:"20", max_age:"150", screening_name:"🫀 Cardiology Check-Up",                  for_smokers:"0", gender:"F", frequency:730  },
+    { min_age:"25", max_age:"29",  screening_name:"🧪 Pap Test (Cervical Cancer Screening)", for_smokers:"0", gender:"F", frequency:1095 },
+    { min_age:"20", max_age:"150", screening_name:"🔆 Mole Mapping (Skin Cancer Screening)", for_smokers:"0", gender:"F", frequency:730  },
+    { min_age:"20", max_age:"39",  screening_name:"👀 Eye Test",                             for_smokers:"0", gender:"F", frequency:730  },
+    { min_age:"20", max_age:"150", screening_name:"🩸 Blood Tests",                          for_smokers:"0", gender:"F", frequency:365  },
+    { min_age:"20", max_age:"150", screening_name:"🦷 Routine Dental Cleaning",              for_smokers:"0", gender:"F", frequency:180  },
+    { min_age:"20", max_age:"150", screening_name:"🫀 Cardiology Check-Up",                  for_smokers:"0", gender:"M", frequency:730  },
+    { min_age:"20", max_age:"150", screening_name:"🔆 Mole Mapping (Skin Cancer Screening)", for_smokers:"0", gender:"M", frequency:730  },
+    { min_age:"20", max_age:"39",  screening_name:"👀 Eye Test",                             for_smokers:"0", gender:"M", frequency:730  },
+    { min_age:"20", max_age:"150", screening_name:"🍒 Testicular Self-Exam",                 for_smokers:"0", gender:"M", frequency:30   },
+    { min_age:"20", max_age:"150", screening_name:"🩸 Blood Tests",                          for_smokers:"0", gender:"M", frequency:365  },
+    { min_age:"20", max_age:"150", screening_name:"🦷 Routine Dental Cleaning",              for_smokers:"0", gender:"M", frequency:180  },
+    { min_age:"30", max_age:"64",  screening_name:"🧪 HPV Test (Cervical Cancer Screening)", for_smokers:"0", gender:"F", frequency:1825 },
+    { min_age:"40", max_age:"64",  screening_name:"👀 Eye Test (every 2 years)",             for_smokers:"0", gender:"F", frequency:730  },
+    { min_age:"30", max_age:"39",  screening_name:"🔬 Breast Ultrasound",                    for_smokers:"0", gender:"F", frequency:365  },
+    { min_age:"40", max_age:"49",  screening_name:"🩻 Mammogram",                            for_smokers:"0", gender:"F", frequency:365  },
+    { min_age:"40", max_age:"64",  screening_name:"👀 Eye Test (every 2 years)",             for_smokers:"0", gender:"M", frequency:730  },
+    { min_age:"50", max_age:"70",  screening_name:"🩻 Mammogram (every 2 years)",            for_smokers:"0", gender:"F", frequency:730  },
+    { min_age:"50", max_age:"75",  screening_name:"💩 Colon Cancer Screening",               for_smokers:"0", gender:"F", frequency:3650 },
+    { min_age:"50", max_age:"80",  screening_name:"🦴 Bone Density Scan (DEXA)",             for_smokers:"0", gender:"F", frequency:730  },
+    { min_age:"50", max_age:"150", screening_name:"👂 Hearing Test",                         for_smokers:"0", gender:"F", frequency:1095 },
+    { min_age:"50", max_age:"75",  screening_name:"💩 Colon Cancer Screening",               for_smokers:"0", gender:"M", frequency:3650 },
+    { min_age:"50", max_age:"150", screening_name:"👂 Hearing Test",                         for_smokers:"0", gender:"M", frequency:1095 },
+    { min_age:"55", max_age:"75",  screening_name:"🫁 Low-Dose CT (for Smokers)",            for_smokers:"1", gender:"F", frequency:365  },
+    { min_age:"55", max_age:"75",  screening_name:"🫁 Low-Dose CT (for Smokers)",            for_smokers:"1", gender:"M", frequency:365  },
+    { min_age:"65", max_age:"150", screening_name:"👀 Eye Test (yearly)",                    for_smokers:"0", gender:"F", frequency:365  },
+    { min_age:"65", max_age:"150", screening_name:"👀 Eye Test (yearly)",                    for_smokers:"0", gender:"M", frequency:365  },
+  ];
+
+  type Screening = typeof screeningData[0];
+
+  function freqLabel(days: number): string {
+    if (days < 60)  return `${days} days`;
+    if (days < 365) { const m = Math.round(days / 30);  return `${m} month${m !== 1 ? 's' : ''}`; }
+    const y = Math.round(days / 365);
+    return `${y} year${y !== 1 ? 's' : ''}`;
+  }
+
+  // ── State ─────────────────────────────────────────────────────────────────
+  let selectedGender: string | null = null;
+  let selectedAge: string | null = null;
+  let isSmoker: number | null = null;
+  let deck: Screening[] = [];
+  let answers: ('yes' | 'no')[] = [];
+  let cardIndex = 0;
+  let dueCount = 0;
+  let quizStep = 1;
+
+  // ── Utilities ─────────────────────────────────────────────────────────────
+  function shuffle<T>(arr: T[]): T[] {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function setProgress(pct: number) {
+    const bar = document.getElementById('progress-bar')!;
+    bar.style.width = `${pct}%`;
+    bar.closest('[role=progressbar]')!.setAttribute('aria-valuenow', String(Math.round(pct)));
+  }
+
+  function pickOption(btn: HTMLElement, groupSel: string) {
+    document.querySelectorAll<HTMLElement>(groupSel).forEach(b => b.classList.remove('picked'));
+    btn.classList.add('picked');
+  }
+
+  function animateOut(outEl: HTMLElement, inEl: HTMLElement, cb?: () => void) {
+    outEl.classList.add('card-exit');
+    outEl.addEventListener('animationend', () => {
+      outEl.classList.add('hidden');
+      outEl.classList.remove('card-exit');
+      inEl.classList.remove('hidden');
+      inEl.classList.add('card-enter');
+      inEl.addEventListener('animationend', () => inEl.classList.remove('card-enter'), { once: true });
+      cb?.();
+    }, { once: true });
+  }
+
+  // ── Q1: Feeling ───────────────────────────────────────────────────────────
+  ['great','meh','unsure'].forEach(key => {
+    const id = key === 'great' ? 'btn-feeling-great' : key === 'meh' ? 'btn-feeling-meh' : 'btn-feeling-unsure';
+    document.getElementById(id)!.addEventListener('click', function() {
+      pickOption(this, '#q-feeling .card-btn-option');
+      setProgress(20);
+      setTimeout(() => {
+        animateOut(document.getElementById('q-feeling')!, document.getElementById('q-age')!, initDrum);
+      }, 280);
+    });
+  });
+
+  // ── Q2: Drum age picker ───────────────────────────────────────────────────
+  const ITEM_H = 52;
+
+  function initDrum() {
+    const list = document.getElementById('drum-list')!;
+    const items = Array.from(list.querySelectorAll<HTMLElement>('.drum-item'));
+
+    // Default to index 1 (20-29) on first show
+    if (list.scrollTop === 0) {
+      list.scrollTop = ITEM_H; // spacer=78, item0 at 78, item1 at 130 → scrollTop=52 centres item1
+    }
+
+    function getActiveIndex(): number {
+      // Centre of the viewport inside the list
+      const viewCentre = list.scrollTop + list.clientHeight / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      items.forEach((item, i) => {
+        const itemCentre = item.offsetTop + ITEM_H / 2;
+        const dist = Math.abs(viewCentre - itemCentre);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+      return best;
+    }
+
+    function applyActive() {
+      const idx = getActiveIndex();
+      items.forEach((item, i) => item.classList.toggle('active', i === idx));
+      selectedAge = items[idx].dataset.value!;
+    }
+
+    // Snap to nearest item after scroll settles
+    let snapTimer: ReturnType<typeof setTimeout>;
+    function onScroll() {
+      applyActive();
+      clearTimeout(snapTimer);
+      snapTimer = setTimeout(() => {
+        const idx = getActiveIndex();
+        // Programmatic snap to exact centre — does NOT re-trigger 'scroll' bounce loop
+        // because we only do it once after idle
+        const target = items[idx].offsetTop - (list.clientHeight / 2 - ITEM_H / 2);
+        list.scrollTo({ top: target, behavior: 'smooth' });
+      }, 80);
+    }
+
+    list.addEventListener('scroll', onScroll, { passive: true });
+
+    // Tap an item → snap to it
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        const target = item.offsetTop - (list.clientHeight / 2 - ITEM_H / 2);
+        list.scrollTo({ top: target, behavior: 'smooth' });
+      });
+    });
+
+    applyActive();
+  }
+
+  document.getElementById('btn-age-continue')!.addEventListener('click', () => {
+    if (!selectedAge) selectedAge = '20-29'; // fallback if drum untouched
+    setProgress(42);
+    animateOut(document.getElementById('q-age')!, document.getElementById('q-gender')!);
+  });
+
+  // ── Q3: Gender ────────────────────────────────────────────────────────────
+  function advanceFromGender() {
+    setProgress(62);
+    setTimeout(() => animateOut(document.getElementById('q-gender')!, document.getElementById('q-smoker')!), 280);
+  }
+
+  document.getElementById('btn-male')!.addEventListener('click', function() {
+    selectedGender = 'M';
+    pickOption(this, '#q-gender .card-btn-option');
+    document.getElementById('gender-other-note')!.classList.add('hidden');
+    advanceFromGender();
+  });
+  document.getElementById('btn-female')!.addEventListener('click', function() {
+    selectedGender = 'F';
+    pickOption(this, '#q-gender .card-btn-option');
+    document.getElementById('gender-other-note')!.classList.add('hidden');
+    advanceFromGender();
+  });
+  document.getElementById('btn-other')!.addEventListener('click', function() {
+    selectedGender = 'N';
+    pickOption(this, '#q-gender .card-btn-option');
+    document.getElementById('gender-other-note')!.classList.remove('hidden');
+  });
+  document.getElementById('btn-other-continue')!.addEventListener('click', () => {
+    advanceFromGender();
+  });
+
+  // ── Q4: Smoker ────────────────────────────────────────────────────────────
+  document.getElementById('btn-smoker-yes')!.addEventListener('click', function() {
+    isSmoker = 1;
+    pickOption(this, '#q-smoker .card-btn-option');
+    setProgress(80);
+    setTimeout(startDeck, 280);
+  });
+  document.getElementById('btn-smoker-no')!.addEventListener('click', function() {
+    isSmoker = 0;
+    pickOption(this, '#q-smoker .card-btn-option');
+    setProgress(80);
+    setTimeout(startDeck, 280);
+  });
+  document.getElementById('smoker-info')!.addEventListener('click', () => {
+    alert('Per WHO: a smoker is someone who has smoked ≥100 cigarettes in their lifetime and currently smokes, or quit within the past 6 months.');
+  });
+
+  // ── Build deck ────────────────────────────────────────────────────────────
+  function startDeck() {
+    const [minAge, maxAge] = (selectedAge ?? '20-29').split('-');
+
+    const matchAge = (s: Screening) =>
+      parseInt(s.min_age) <= parseInt(maxAge || '150') &&
+      parseInt(s.max_age) >= parseInt(minAge) &&
+      (s.for_smokers === "0" || parseInt(s.for_smokers) === isSmoker);
+
+    let filtered: Screening[];
+    if (selectedGender === 'N') {
+      // Neutral: keep screenings whose name appears in BOTH M and F lists at this age
+      const mNames = new Set(screeningData.filter(s => s.gender === 'M' && matchAge(s)).map(s => s.screening_name));
+      const fNames = new Set(screeningData.filter(s => s.gender === 'F' && matchAge(s)).map(s => s.screening_name));
+      const shared = new Set([...mNames].filter(n => fNames.has(n)));
+      // Deduplicate by name (take M copy as canonical)
+      const seen = new Set<string>();
+      filtered = screeningData.filter(s => s.gender === 'M' && matchAge(s) && shared.has(s.screening_name) && !seen.has(s.screening_name) && seen.add(s.screening_name) as unknown as boolean);
+    } else {
+      filtered = screeningData.filter(s => s.gender === selectedGender && matchAge(s));
+    }
+
+    deck = shuffle([...filtered]).slice(0, Math.min(5, filtered.length));
+    answers = []; cardIndex = 0; dueCount = 0;
+
+    document.getElementById('step1')!.classList.add('hidden');
+    document.getElementById('step2')!.classList.remove('hidden');
+    showCard(0);
+    quizStep = 2;
+    setProgress(85);
+  }
+
+  // ── Step 2 ────────────────────────────────────────────────────────────────
+  function showCard(idx: number) {
+    const s = deck[idx];
+    document.getElementById('card-counter')!.textContent = `Card ${idx + 1} of ${deck.length}`;
+    document.getElementById('card-num')!.textContent = String(idx + 1);
+    document.getElementById('card-name')!.textContent = s.screening_name;
+    document.getElementById('card-question')!.innerHTML =
+      `Have you done this in the last <strong class="text-white">${freqLabel(s.frequency)}</strong>?`;
+
+    const card = document.getElementById('active-card')!;
+    card.classList.remove('card-exit');
+    void (card as HTMLElement).offsetWidth; // force reflow
+    card.classList.add('card-enter');
+    card.addEventListener('animationend', () => card.classList.remove('card-enter'), { once: true });
+
+    const btnY = document.getElementById('btn-yes')! as HTMLButtonElement;
+    const btnN = document.getElementById('btn-no')!  as HTMLButtonElement;
+    btnY.disabled = false; btnN.disabled = false;
+    btnY.style.opacity = ''; btnN.style.opacity = '';
+  }
+
+  function handleAnswer(answer: 'yes' | 'no') {
+    answers[cardIndex] = answer;
+    if (answer === 'no') dueCount++;
+    document.getElementById('due-live')!.textContent = `${dueCount} may be due`;
+
+    const btnY = document.getElementById('btn-yes')! as HTMLButtonElement;
+    const btnN = document.getElementById('btn-no')!  as HTMLButtonElement;
+    btnY.disabled = true; btnN.disabled = true;
+    btnY.style.opacity = answer === 'yes' ? '1' : '0.25';
+    btnN.style.opacity = answer === 'no'  ? '1' : '0.25';
+
+    const card = document.getElementById('active-card')!;
+    card.classList.add('card-exit');
+    setTimeout(() => {
+      cardIndex++;
+      if (cardIndex < deck.length) {
+        showCard(cardIndex);
+        setProgress(85 + (cardIndex / deck.length) * 12);
+      } else {
+        showResults();
+      }
+    }, 220);
+  }
+
+  document.getElementById('btn-yes')!.addEventListener('click', () => handleAnswer('yes'));
+  document.getElementById('btn-no')!.addEventListener('click',  () => handleAnswer('no'));
+
+  // ── Step 3 ────────────────────────────────────────────────────────────────
+  function showResults() {
+    document.getElementById('step2')!.classList.add('hidden');
+    document.getElementById('step3')!.classList.remove('hidden');
+    quizStep = 3;
+    setProgress(100);
+
+    const countEl = document.getElementById('due-count')!;
+    countEl.textContent = String(dueCount);
+    countEl.classList.add('score-pop');
+
+    const label = document.getElementById('score-label')!;
+    const cta   = document.getElementById('cta-headline')!;
+
+    if (dueCount === 0) {
+      countEl.classList.add('text-emerald-400');
+      label.textContent = "You're looking good! 🎉";
+      label.className = 'text-lg font-semibold text-emerald-400';
+      cta.textContent = "Keep it that way — let the app remind you when it's time.";
+    } else if (dueCount <= 2) {
+      countEl.classList.add('text-amber-400');
+      label.textContent = 'A few things to look into.';
+      label.className = 'text-lg font-semibold text-amber-400';
+      cta.textContent = `You may have ${dueCount} screening${dueCount > 1 ? 's' : ''} coming up. Don't leave it to memory.`;
+    } else {
+      countEl.classList.add('text-red-400');
+      label.textContent = 'Some catching up to do.';
+      label.className = 'text-lg font-semibold text-red-400';
+      cta.textContent = `You may have ${dueCount} screenings due. The app tracks them all — with reminders.`;
+    }
+
+    const list = document.getElementById('results-list')!;
+    list.innerHTML = '';
+    deck.forEach((s, i) => {
+      const done = answers[i] === 'yes';
+      const row = document.createElement('div');
+      row.className = 'result-row flex items-center gap-3 py-2.5 px-4 rounded-xl text-sm';
+      row.style.cssText = `animation-delay:${i * 80 + 200}ms;background:${done ? 'rgba(16,185,129,0.07)' : 'rgba(239,68,68,0.07)'};border:1px solid ${done ? 'rgba(52,211,153,0.15)' : 'rgba(252,165,165,0.15)'}`;
+      row.innerHTML = `
+        <span>${done ? '✅' : '⚠️'}</span>
+        <span class="${done ? 'text-emerald-300' : 'text-red-300'} flex-1">${s.screening_name}</span>
+        <span class="text-xs font-semibold ${done ? 'text-emerald-600' : 'text-red-500'}">${done ? 'Up to date' : 'May be due'}</span>
+      `;
+      list.appendChild(row);
+    });
+  }
+
+  // ── Restart ───────────────────────────────────────────────────────────────
+  document.getElementById('restart-btn')!.addEventListener('click', () => {
+    deck = []; answers = []; cardIndex = 0; dueCount = 0; quizStep = 1;
+    selectedGender = null; selectedAge = null; isSmoker = null;
+
+    document.getElementById('step3')!.classList.add('hidden');
+    document.getElementById('step2')!.classList.add('hidden');
+    document.getElementById('step1')!.classList.remove('hidden');
+    ['q-age','q-gender','q-smoker'].forEach(id => document.getElementById(id)!.classList.add('hidden'));
+    document.getElementById('q-feeling')!.classList.remove('hidden');
+    document.querySelectorAll('.card-btn-option').forEach(b => b.classList.remove('picked'));
+    document.getElementById('due-count')!.className = 'text-7xl font-black score-number text-white';
+    setProgress(0);
+    document.getElementById('start')!.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ── ⓘ popover ─────────────────────────────────────────────────────────────
+  const infoBtn = document.getElementById('info-btn')!;
+  const infoPop = document.getElementById('info-popover')!;
+  infoBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = !infoPop.classList.contains('hidden');
+    infoPop.classList.toggle('hidden', open);
+    infoBtn.setAttribute('aria-expanded', String(!open));
+  });
+  document.addEventListener('click', () => { infoPop.classList.add('hidden'); infoBtn.setAttribute('aria-expanded','false'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') infoPop.classList.add('hidden'); });
+
+  // ── Scroll toast ──────────────────────────────────────────────────────────
+  const toast = document.getElementById('scroll-toast')!;
+  let toastShown = false;
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (pct > 0.5 && !toastShown && quizStep < 3) {
+      toastShown = true;
+      toast.classList.remove('translate-y-24','opacity-0','pointer-events-none');
+      setTimeout(() => toast.classList.add('translate-y-24','opacity-0','pointer-events-none'), 8000);
+    }
+  });
+
+  setProgress(0);
+</script>

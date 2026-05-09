@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "url": "https://screeningclearing.com/author",
+    "name": "About Screening Clearing Editorial",
+    "description": "Our mission, editorial process, and how we verify health screening information against NHS, CDC, and USPSTF guidelines.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Screening Clearing Editorial",
+      "url": "https://screeningclearing.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Screening Clearing Editorial",
+    "url": "https://screeningclearing.com",
+    "description": "We help individuals stay on track with their preventative health screenings by faithfully reporting public health guidelines from NHS, CDC, and USPSTF.",
+    "sameAs": []
+  }
+];
+---
+
+<BaseLayout
+  title="About the Author"
+  description="Screening Clearing Editorial — our mission, editorial process, and how we verify health screening information against NHS, CDC, and USPSTF guidelines."
+  jsonLd={jsonLd}
+>
+  <article class="max-w-2xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Screening Clearing Editorial</h1>
+    <p class="text-[#64748b] text-sm mb-10">Health content you can trace to its source.</p>
+
+    <div class="prose prose-invert prose-teal max-w-none prose-p:text-[#cbd5e1] prose-headings:text-[#f1f5f9] prose-a:text-[#06b6d4]">
+
+      <h2>Our Mission</h2>
+      <p>
+        We help individuals stay on track with their preventative health screenings. Millions of people miss
+        recommended screenings — not because they don't care, but because the guidance is buried in clinical
+        documents or varies by country, age, and risk level. We translate that guidance into clear,
+        actionable schedules that anyone can follow.
+      </p>
+
+      <h2>Who We Are</h2>
+      <p>
+        Screening Clearing Editorial is the content team behind the Screening Clearing app and this website.
+        We are not medical doctors. Our expertise is in <strong>research rigour</strong>: locating, reading,
+        and accurately summarising official public health guidelines so that our readers never have to
+        navigate dense clinical documentation themselves.
+      </p>
+      <p>
+        Every claim we publish traces back to a primary source — a government health body, international
+        medical society, or peer-reviewed systematic review. If we cannot source it, we do not publish it.
+      </p>
+
+      <h2>Editorial Process</h2>
+      <p>Every article on this site goes through the following steps before publication:</p>
+      <ol>
+        <li>
+          <strong>Primary source identification.</strong> We locate the most current guidelines from
+          authoritative bodies: the NHS (UK), CDC and USPSTF (US), and relevant international societies
+          (e.g. ESGE, ACG, ACS).
+        </li>
+        <li>
+          <strong>Cross-reference.</strong> Where guidelines differ by country or risk level, we report
+          all variants and explain the differences. We do not cherry-pick the most alarming or most
+          reassuring figure.
+        </li>
+        <li>
+          <strong>Plain-language rewrite.</strong> We rewrite clinical language for a general audience
+          without distorting meaning. Technical terms are defined in context.
+        </li>
+        <li>
+          <strong>Source citation.</strong> Every factual claim is linked to its primary source in the
+          article's reference section. Readers can verify everything we write.
+        </li>
+        <li>
+          <strong>Date-stamping and review.</strong> Each article displays its publication and last-reviewed
+          date. We audit articles annually or whenever major guidelines are updated.
+        </li>
+      </ol>
+
+      <h2>Sources We Rely On</h2>
+      <ul>
+        <li>NHS — <a href="https://www.nhs.uk" target="_blank" rel="noopener">nhs.uk</a></li>
+        <li>CDC — <a href="https://www.cdc.gov" target="_blank" rel="noopener">cdc.gov</a></li>
+        <li>USPSTF — <a href="https://www.uspreventiveservicestaskforce.org" target="_blank" rel="noopener">uspreventiveservicestaskforce.org</a></li>
+        <li>World Health Organization — <a href="https://www.who.int" target="_blank" rel="noopener">who.int</a></li>
+        <li>American Cancer Society — <a href="https://www.cancer.org" target="_blank" rel="noopener">cancer.org</a></li>
+        <li>European Society of Gastrointestinal Endoscopy (ESGE)</li>
+        <li>Peer-reviewed journals including <em>JAMA</em>, <em>The Lancet</em>, and <em>Annals of Internal Medicine</em></li>
+      </ul>
+
+      <h2>What We Do Not Do</h2>
+      <ul>
+        <li>We do not provide personalised medical advice.</li>
+        <li>We do not diagnose conditions or interpret individual test results.</li>
+        <li>We do not recommend specific clinicians, hospitals, or products.</li>
+        <li>We do not publish sponsored health claims or affiliate-driven recommendations.</li>
+      </ul>
+
+      <h2>Medical Disclaimer</h2>
+      <p>
+        All content on Screening Clearing is produced for <strong>informational and educational purposes
+        only</strong>. It is not a substitute for professional medical advice, diagnosis, or treatment.
+        Always consult a qualified healthcare provider with any questions you have regarding a medical
+        condition or before making any decisions related to your health care.
+      </p>
+      <p>
+        Screening recommendations vary based on individual risk factors, family history, and local
+        healthcare policy. The schedules we describe reflect population-level guidelines — your doctor
+        may recommend a different schedule for your specific situation. Our tools are designed to assist
+        with scheduling, not to dictate clinical necessity.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Corrections, questions, or feedback about our content:
+        <a href="mailto:screeningclearing@gmail.com">screeningclearing@gmail.com</a>
+      </p>
+
+    </div>
+  </article>
+</BaseLayout>

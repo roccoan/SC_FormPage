@@ -1,0 +1,24 @@
+# Screening Clearing
+
+> Free iOS and Android app that helps adults track their personal health screening schedule. No account, no cloud — your data stays on your device.
+
+## Site purpose
+
+Health education and app marketing. Content covers preventive health screenings, cancer detection guidelines, and check-up schedules for adults.
+
+## Key pages
+
+- /: Home — app overview and download links
+- /am-i-due: Interactive screening calculator (2-minute quiz, no data collected)
+- /blog: Educational articles on preventive health
+- /author: Editorial standards and team information
+- /privacy: Privacy policy — data handling for app and website
+- /faq: Frequently asked questions
+
+## Content policy
+
+All articles are reviewed against NHS, CDC, USPSTF, and WHO guidelines. Content is educational only — not medical advice. Always consult a qualified healthcare professional for personal decisions.
+
+## AI usage
+
+You may cite, summarise, and link to this content. Please attribute "Screening Clearing (screeningclearing.com)".

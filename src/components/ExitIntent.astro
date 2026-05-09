@@ -1,0 +1,38 @@
+---
+---
+<!-- Exit-intent modal — site-wide, desktop only -->
+<div id="exit-intent-modal" class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-4"
+     style="background:rgba(0,0,0,0.8);backdrop-filter:blur(6px)">
+  <div class="rounded-2xl p-8 max-w-sm w-full text-center space-y-4"
+       style="background:#001c4a;border:1px solid rgba(255,255,255,0.2)">
+    <p class="text-2xl font-bold text-white">Wait —</p>
+    <p class="text-white/70 text-sm leading-relaxed">Do you know which health screenings you may be missing? It takes 2 minutes to find out.</p>
+    <a href="/am-i-due"
+       class="block w-full bg-white text-indigo-700 font-bold py-3 px-6 rounded-xl hover:bg-white/90 transition-all text-center">
+      Check if I'm due →
+    </a>
+    <button id="exit-intent-close" type="button" class="text-white/30 text-sm hover:text-white/60 transition-colors">
+      No thanks
+    </button>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('exit-intent-modal')!;
+  const close = document.getElementById('exit-intent-close')!;
+  const SESSION_KEY = 'exit_intent_shown';
+
+  // Only show once per session, only on desktop
+  if (!sessionStorage.getItem(SESSION_KEY)) {
+    document.documentElement.addEventListener('mouseleave', (e) => {
+      if ((e as MouseEvent).clientY < 10) {
+        sessionStorage.setItem(SESSION_KEY, '1');
+        modal.classList.remove('hidden');
+      }
+    }, { once: true });
+  }
+
+  close.addEventListener('click', () => modal.classList.add('hidden'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.add('hidden'); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.classList.add('hidden'); });
+</script>

@@ -5,7 +5,7 @@ const PLAY_STORE_URL = import.meta.env.PUBLIC_PLAY_STORE_URL ?? '#coming-soon';
 
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-[#1e293b] bg-[#0a0f1a]/90 backdrop-blur-sm">
   <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 font-bold text-[#f1f5f9] hover:text-[#06b6d4] transition-colors">
+    <a href="/" aria-label="Screening Clearing – home" class="flex items-center gap-2 font-bold text-[#f1f5f9] hover:text-[#06b6d4] transition-colors">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="28" height="28" rx="8" fill="#0891b2"/>
         <path d="M14 6v16M6 14h16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
@@ -20,6 +20,10 @@ const PLAY_STORE_URL = import.meta.env.PUBLIC_PLAY_STORE_URL ?? '#coming-soon';
     </div>
 
     <div class="flex items-center gap-2">
+      <a href="/am-i-due"
+         class="hidden md:inline-flex items-center gap-1.5 border border-orange-500 text-orange-400 hover:bg-orange-500/10 text-sm font-semibold px-3 py-2 rounded-lg transition-colors">
+        Am I Due?
+      </a>
       <a
         href={APP_STORE_URL}
         aria-label="Download on the App Store"
