@@ -49,7 +49,7 @@ const jsonLd = {
 
         <!-- Q1: Health feeling (ice-breaker) -->
         <div id="q-feeling" class="quiz-card rounded-3xl p-8 card-enter">
-          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 1 of 4</p>
+          <p class="text-white/60 text-xs font-semibold uppercase tracking-widest mb-5">Question 1 of 4</p>
           <h2 class="text-2xl font-black text-white mb-2">How do you feel about your health right now?</h2>
           <p class="text-white/50 text-sm mb-8">Be honest — there's no wrong answer.</p>
           <fieldset class="space-y-3 border-0 p-0 m-0">
@@ -71,7 +71,7 @@ const jsonLd = {
 
         <!-- Q2: Age drum picker -->
         <div id="q-age" class="quiz-card rounded-3xl p-8 card-enter hidden">
-          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 2 of 4</p>
+          <p class="text-white/60 text-xs font-semibold uppercase tracking-widest mb-5">Question 2 of 4</p>
           <h2 class="text-2xl font-black text-white mb-2">How old are you?</h2>
           <p class="text-white/50 text-sm mb-6">Scroll the wheel to your age group.</p>
 
@@ -103,7 +103,7 @@ const jsonLd = {
 
         <!-- Q3: Sex assigned at birth -->
         <div id="q-gender" class="quiz-card rounded-3xl p-8 card-enter hidden">
-          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 3 of 4</p>
+          <p class="text-white/60 text-xs font-semibold uppercase tracking-widest mb-5">Question 3 of 4</p>
           <h2 class="text-2xl font-black text-white mb-2">What was your sex assigned at birth?</h2>
           <fieldset class="border-0 p-0 m-0">
             <legend class="sr-only">Sex assigned at birth</legend>
@@ -132,7 +132,7 @@ const jsonLd = {
 
         <!-- Q4: Smoker -->
         <div id="q-smoker" class="quiz-card rounded-3xl p-8 card-enter hidden">
-          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">Question 4 of 4</p>
+          <p class="text-white/60 text-xs font-semibold uppercase tracking-widest mb-5">Question 4 of 4</p>
           <h2 class="text-2xl font-black text-white mb-2">Do you smoke?</h2>
           <p class="text-white/50 text-sm mb-8">Some screenings are specifically recommended for smokers.</p>
           <fieldset class="border-0 p-0 m-0">
@@ -166,7 +166,7 @@ const jsonLd = {
           <div class="quiz-card rounded-3xl absolute inset-0" style="transform:translateY(12px) scale(0.95);opacity:0.25"></div>
           <div class="quiz-card rounded-3xl absolute inset-0" style="transform:translateY(6px) scale(0.975);opacity:0.45"></div>
           <div id="active-card" class="quiz-card rounded-3xl p-8 relative z-10 card-enter">
-            <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-4">Check #<span id="card-num">1</span></p>
+            <p class="text-white/60 text-xs font-semibold uppercase tracking-widest mb-4">Check #<span id="card-num">1</span></p>
             <h2 id="card-name"     class="text-2xl font-black text-white mb-3 leading-tight"></h2>
             <p id="card-question"  class="text-white/70 text-base mb-8"></p>
             <div class="grid grid-cols-2 gap-4">
@@ -181,13 +181,13 @@ const jsonLd = {
       <div id="step3" class="hidden space-y-6">
 
         <div class="quiz-card rounded-3xl p-8 text-center space-y-3">
-          <p class="text-white/40 text-xs font-semibold uppercase tracking-widest">Your result</p>
+          <p class="text-white/60 text-xs font-semibold uppercase tracking-widest">Your result</p>
           <div class="flex items-baseline justify-center gap-2">
             <span id="due-count" class="text-7xl font-black score-number text-white">0</span>
             <span class="text-white/60 text-xl font-semibold">screenings</span>
           </div>
           <p id="score-label" class="text-lg font-semibold"></p>
-          <p class="text-white/40 text-xs">may be missing from your schedule</p>
+          <p class="text-white/60 text-xs">may be missing from your schedule</p>
           <div class="relative inline-block mt-1">
             <button id="info-btn" type="button" aria-label="About these results" aria-expanded="false"
               class="text-white/55 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
@@ -198,10 +198,10 @@ const jsonLd = {
               <p class="text-white/80 leading-relaxed">Illustrative examples based on general guidelines — not a personal medical recommendation. Use them as a starting point for a conversation with your doctor.</p>
               <p class="text-white/80 leading-relaxed">Studies show early detection improves 5-year survival rates for most common cancers by 5× or more.</p>
               <div class="pt-2 border-t border-white/10 space-y-1">
-                <p class="text-white/40 font-semibold">Sources</p>
-                <a href="https://www.cancer.org" target="_blank" rel="noopener" class="block text-[#06b6d4] hover:underline">American Cancer Society</a>
-                <a href="https://www.who.int/health-topics/cancer" target="_blank" rel="noopener" class="block text-[#06b6d4] hover:underline">World Health Organization</a>
-                <a href="https://www.uspreventiveservicestaskforce.org" target="_blank" rel="noopener" class="block text-[#06b6d4] hover:underline">USPSTF</a>
+                <p class="text-white/60 font-semibold">Sources</p>
+                <a href="https://www.cancer.org" target="_blank" rel="noopener" class="block text-[#06b6d4] underline hover:no-underline">American Cancer Society</a>
+                <a href="https://www.who.int/health-topics/cancer" target="_blank" rel="noopener" class="block text-[#06b6d4] underline hover:no-underline">World Health Organization</a>
+                <a href="https://www.uspreventiveservicestaskforce.org" target="_blank" rel="noopener" class="block text-[#06b6d4] underline hover:no-underline">USPSTF</a>
               </div>
             </div>
           </div>

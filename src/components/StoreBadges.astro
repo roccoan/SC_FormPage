@@ -78,7 +78,7 @@ const tl = textLg[size];
 
   <!-- QR code row — desktop only, bridges desktop→mobile gap -->
   <div class="hidden md:flex items-center gap-4 p-3 rounded-xl" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10)">
-    <div class="w-28 h-28 shrink-0 rounded-lg overflow-hidden p-1.5" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)" aria-label="QR code to download the app on your phone">
+    <div class="w-28 h-28 shrink-0 rounded-lg overflow-hidden p-1.5" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)" role="img" aria-label="QR code to download the app on your phone">
       <Fragment set:html={qrSvg} />
     </div>
     <div>

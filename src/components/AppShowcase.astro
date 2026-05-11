@@ -89,25 +89,26 @@ const slides = [
       <div class="flex justify-center gap-2 mt-10">
         {slides.map((_, i) => (
           <button
-            class="w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none"
-            style={`background-color: ${i === 0 ? '#0891b2' : '#1e293b'}; transform: scale(${i === 0 ? '1.2' : '1'})`}
+            class="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 focus:outline-none"
             data-dot={i}
             aria-label={`View screen ${i + 1}`}
-          />
+          >
+            <span class="w-2.5 h-2.5 rounded-full pointer-events-none transition-all duration-300" style={`background-color: ${i === 0 ? '#0891b2' : '#1e293b'}; transform: scale(${i === 0 ? '1.2' : '1'})`}></span>
+          </button>
         ))}
       </div>
 
       <!-- Prev / Next arrows -->
       <button
         id="prev-btn"
-        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 w-9 h-9 rounded-full bg-[#0d1424] border border-[#1e293b] hover:border-[#0891b2] text-[#94a3b8] hover:text-[#f1f5f9] flex items-center justify-center transition-colors"
+        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 w-11 h-11 rounded-full bg-[#0d1424] border border-[#1e293b] hover:border-[#0891b2] text-[#94a3b8] hover:text-[#f1f5f9] flex items-center justify-center transition-colors"
         aria-label="Previous"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M10.354 3.646a.5.5 0 0 1 0 .708L6.707 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z"/></svg>
       </button>
       <button
         id="next-btn"
-        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 w-9 h-9 rounded-full bg-[#0d1424] border border-[#1e293b] hover:border-[#0891b2] text-[#94a3b8] hover:text-[#f1f5f9] flex items-center justify-center transition-colors"
+        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 w-11 h-11 rounded-full bg-[#0d1424] border border-[#1e293b] hover:border-[#0891b2] text-[#94a3b8] hover:text-[#f1f5f9] flex items-center justify-center transition-colors"
         aria-label="Next"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M5.646 3.646a.5.5 0 0 0 0 .708L9.293 8 5.646 11.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0z"/></svg>
@@ -143,8 +144,11 @@ const slides = [
 
     document.querySelectorAll('[data-dot]').forEach((el) => {
       const i = parseInt((el as HTMLElement).dataset.dot ?? '0');
-      (el as HTMLElement).style.backgroundColor = i === current ? '#0891b2' : '#1e293b';
-      (el as HTMLElement).style.transform = i === current ? 'scale(1.2)' : 'scale(1)';
+      const span = el.querySelector('span') as HTMLElement | null;
+      if (span) {
+        span.style.backgroundColor = i === current ? '#0891b2' : '#1e293b';
+        span.style.transform = i === current ? 'scale(1.2)' : 'scale(1)';
+      }
     });
   }
 
