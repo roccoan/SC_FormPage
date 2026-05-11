@@ -82,16 +82,16 @@ const jsonLd = {
                  style="top:50%;transform:translateY(-50%);height:52px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25)"></div>
             <div id="drum-list" role="listbox" aria-label="Select your age group" tabindex="0"
                  style="height:208px;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-snap-stop:always;scrollbar-width:none;-webkit-overflow-scrolling:touch">
-              <div style="height:78px;scroll-snap-align:none;pointer-events:none"></div>
-              <div class="drum-item" data-value="0-19">0 – 19 years</div>
-              <div class="drum-item" data-value="20-29">20 – 29 years</div>
-              <div class="drum-item" data-value="30-39">30 – 39 years</div>
-              <div class="drum-item" data-value="40-49">40 – 49 years</div>
-              <div class="drum-item" data-value="50-59">50 – 59 years</div>
-              <div class="drum-item" data-value="60-69">60 – 69 years</div>
-              <div class="drum-item" data-value="70-79">70 – 79 years</div>
-              <div class="drum-item" data-value="80-150">80+ years</div>
-              <div style="height:78px;scroll-snap-align:none;pointer-events:none"></div>
+              <div style="height:78px;scroll-snap-align:none;pointer-events:none" role="presentation"></div>
+              <div class="drum-item" role="option" aria-selected="false" data-value="0-19">0 – 19 years</div>
+              <div class="drum-item" role="option" aria-selected="false" data-value="20-29">20 – 29 years</div>
+              <div class="drum-item" role="option" aria-selected="false" data-value="30-39">30 – 39 years</div>
+              <div class="drum-item" role="option" aria-selected="true" data-value="40-49">40 – 49 years</div>
+              <div class="drum-item" role="option" aria-selected="false" data-value="50-59">50 – 59 years</div>
+              <div class="drum-item" role="option" aria-selected="false" data-value="60-69">60 – 69 years</div>
+              <div class="drum-item" role="option" aria-selected="false" data-value="70-79">70 – 79 years</div>
+              <div class="drum-item" role="option" aria-selected="false" data-value="80-150">80+ years</div>
+              <div style="height:78px;scroll-snap-align:none;pointer-events:none" role="presentation"></div>
             </div>
           </div>
 
@@ -147,7 +147,7 @@ const jsonLd = {
             </div>
           </fieldset>
           <button type="button" id="smoker-info"
-                  class="mt-4 text-white/30 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
+                  class="mt-4 text-white/55 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
             What counts as a smoker?
           </button>
         </div>
@@ -190,7 +190,7 @@ const jsonLd = {
           <p class="text-white/40 text-xs">may be missing from your schedule</p>
           <div class="relative inline-block mt-1">
             <button id="info-btn" type="button" aria-label="About these results" aria-expanded="false"
-              class="text-white/30 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
+              class="text-white/55 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
               What do these results mean?
             </button>
             <div id="info-popover" class="hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-72 rounded-xl p-4 text-left text-xs space-y-2 z-20"
@@ -227,7 +227,7 @@ const jsonLd = {
                 <p class="text-white/55 text-xs mt-1 leading-relaxed">Track every screening and get reminded when you're due — automatically.</p>
               </div>
               <StoreBadges size="sm" />
-              <p class="text-white/30 text-xs">Always consult your doctor for personal medical decisions.</p>
+              <p class="text-white/55 text-xs">Always consult your doctor for personal medical decisions.</p>
             </div>
           </div>
         </div>
@@ -235,12 +235,12 @@ const jsonLd = {
         <div id="results-list" class="space-y-2"></div>
 
         <button id="restart-btn" type="button"
-                class="w-full text-white/30 hover:text-white/60 font-medium py-3 rounded-xl transition-all text-sm border border-white/10 hover:border-white/20">
+                class="w-full text-white/55 hover:text-white/60 font-medium py-3 rounded-xl transition-all text-sm border border-white/10 hover:border-white/20">
           ← Try a different profile
         </button>
       </div>
 
-      <p class="text-center text-white/20 text-xs mt-8">General guidelines only · Not a substitute for medical advice</p>
+      <p class="text-center text-white/50 text-xs mt-8">General guidelines only · Not a substitute for medical advice</p>
     </div>
   </div>
 
@@ -430,7 +430,10 @@ const jsonLd = {
 
     function applyActive() {
       const idx = getActiveIndex();
-      items.forEach((item, i) => item.classList.toggle('active', i === idx));
+      items.forEach((item, i) => {
+        item.classList.toggle('active', i === idx);
+        item.setAttribute('aria-selected', String(i === idx));
+      });
       selectedAge = items[idx].dataset.value!;
     }
 
