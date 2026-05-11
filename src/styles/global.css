@@ -1,3 +1,4 @@
+@import "@fontsource-variable/inter";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -9,7 +10,7 @@
   --color-accent-light: #06b6d4;
   --color-text: #f1f5f9;
   --color-muted: #94a3b8;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 html {
