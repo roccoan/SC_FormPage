@@ -32,7 +32,7 @@ const badgeDisabled = 'bg-[#0891b2]/40 opacity-60 pointer-events-none cursor-not
         href={isComingSoon ? undefined : APP_STORE_URL}
         aria-label="Download on the App Store"
         class={`hidden sm:inline-flex ${badgeBase} ${isComingSoon ? badgeDisabled : badgeActive}`}
-        {...(isComingSoon ? { 'aria-disabled': 'true', tabindex: '-1' } : {})}
+        {...(isComingSoon ? { tabindex: '-1' } : {})}
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         iOS
@@ -41,7 +41,7 @@ const badgeDisabled = 'bg-[#0891b2]/40 opacity-60 pointer-events-none cursor-not
         href={isComingSoon ? undefined : PLAY_STORE_URL}
         aria-label="Get it on Google Play"
         class={`hidden sm:inline-flex ${badgeBase} ${isComingSoon ? badgeDisabled : badgeActive}`}
-        {...(isComingSoon ? { 'aria-disabled': 'true', tabindex: '-1' } : {})}
+        {...(isComingSoon ? { tabindex: '-1' } : {})}
       >
         <svg width="15" height="15" viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.22.99.14l13.23-7.63-2.9-2.9-11.32 10.39z" fill="white"/><path d="M22.46 10.48L19.2 8.6l-3.24 3.24 3.24 3.24 3.29-1.9c.94-.54.94-2.16-.03-2.7z" fill="white"/><path d="M3.18.24C2.83.33 2.5.58 2.3.97L13.63 12.3l2.9-2.9L3.18.24z" fill="white"/><path d="M2.3.97C2.11 1.35 2 1.8 2 2.28v19.44c0 .48.1.93.3 1.31l.06.05 10.89-10.89v-.25L2.36.92l-.06.05z" fill="white"/></svg>
         Android
@@ -50,7 +50,7 @@ const badgeDisabled = 'bg-[#0891b2]/40 opacity-60 pointer-events-none cursor-not
       <!-- Mobile hamburger -->
       <button
         id="nav-hamburger"
-        class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-lg hover:bg-white/10 transition-colors"
+        class="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-lg hover:bg-white/10 transition-colors"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -78,7 +78,7 @@ const badgeDisabled = 'bg-[#0891b2]/40 opacity-60 pointer-events-none cursor-not
         href={isComingSoon ? undefined : APP_STORE_URL}
         aria-label="Download on the App Store"
         class={`flex-1 flex items-center justify-center gap-1.5 ${badgeBase} ${isComingSoon ? badgeDisabled : badgeActive}`}
-        {...(isComingSoon ? { 'aria-disabled': 'true', tabindex: '-1' } : {})}
+        {...(isComingSoon ? { tabindex: '-1' } : {})}
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         iOS {isComingSoon && <span class="text-[10px] opacity-70">(soon)</span>}
@@ -87,7 +87,7 @@ const badgeDisabled = 'bg-[#0891b2]/40 opacity-60 pointer-events-none cursor-not
         href={isComingSoon ? undefined : PLAY_STORE_URL}
         aria-label="Get it on Google Play"
         class={`flex-1 flex items-center justify-center gap-1.5 ${badgeBase} ${isComingSoon ? badgeDisabled : badgeActive}`}
-        {...(isComingSoon ? { 'aria-disabled': 'true', tabindex: '-1' } : {})}
+        {...(isComingSoon ? { tabindex: '-1' } : {})}
       >
         <svg width="14" height="14" viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.22.99.14l13.23-7.63-2.9-2.9-11.32 10.39z" fill="white"/><path d="M22.46 10.48L19.2 8.6l-3.24 3.24 3.24 3.24 3.29-1.9c.94-.54.94-2.16-.03-2.7z" fill="white"/><path d="M3.18.24C2.83.33 2.5.58 2.3.97L13.63 12.3l2.9-2.9L3.18.24z" fill="white"/><path d="M2.3.97C2.11 1.35 2 1.8 2 2.28v19.44c0 .48.1.93.3 1.31l.06.05 10.89-10.89v-.25L2.36.92l-.06.05z" fill="white"/></svg>
         Android {isComingSoon && <span class="text-[10px] opacity-70">(soon)</span>}

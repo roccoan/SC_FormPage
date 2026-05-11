@@ -82,6 +82,7 @@ const benefits = [
   title="Screening Clearing"
   description="Never miss a health check-up again. Screening Clearing is a free iOS and Android app that tracks your personal prevention schedule and reminds you when screenings are due."
   jsonLd={[websiteSchema, appSchema, orgSchema]}
+  preloadHeroImage={true}
 >
   <!-- Hero -->
   <section class="relative overflow-hidden px-4 pt-16 pb-20 md:pt-24 md:pb-28">
@@ -111,12 +112,14 @@ const benefits = [
 
       <div class="flex justify-center md:justify-end">
         <img
-          src="/images/hero.png"
+          src="/images/hero.webp"
           alt="Screening Clearing app showing health check-up schedule"
           class="w-72 md:w-80 lg:w-96 h-auto object-contain drop-shadow-2xl"
-          width="384"
-          height="640"
+          width="409"
+          height="610"
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
       </div>
     </div>

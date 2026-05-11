@@ -35,7 +35,7 @@ const blogSchema = {
             href={`/blog/${post.id}`}
             class="group bg-[#0d1424] border border-[#1e293b] hover:border-[#0891b2] rounded-2xl p-6 transition-colors block"
           >
-            <div class="flex items-center gap-2 text-xs text-[#64748b] mb-3">
+            <div class="flex items-center gap-2 text-xs text-[#94a3b8] mb-3">
               <span class="capitalize bg-[#1e293b] px-2 py-0.5 rounded">{post.data.type}</span>
               <time datetime={post.data.date.toISOString()}>
                 {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}

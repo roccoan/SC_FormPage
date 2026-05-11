@@ -14,6 +14,7 @@ interface Props {
   noindex?: boolean;
   jsonLd?: object | object[];
   keywords?: string[];
+  preloadHeroImage?: boolean;
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   noindex = false,
   jsonLd,
   keywords = [],
+  preloadHeroImage = false,
 } = Astro.props;
 
 const GA_ID = import.meta.env.PUBLIC_GA_ID;
@@ -76,10 +78,22 @@ const jsonLdArray = jsonLd
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Preconnect -->
+    <!-- Preconnect + non-blocking font load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" />
+    </noscript>
+
+    {preloadHeroImage && (
+      <link rel="preload" as="image" href="/images/hero.webp" fetchpriority="high" />
+    )}
 
     <!-- Cookiebot consent (blocks GA4 until consent) -->
     {COOKIEBOT_ID && (
