@@ -13,6 +13,7 @@ interface Props {
   canonicalURL?: string;
   noindex?: boolean;
   jsonLd?: object | object[];
+  keywords?: string[];
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   canonicalURL = Astro.url.href,
   noindex = false,
   jsonLd,
+  keywords = [],
 } = Astro.props;
 
 const GA_ID = import.meta.env.PUBLIC_GA_ID;
@@ -47,6 +49,7 @@ const jsonLdArray = jsonLd
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
 
@@ -61,6 +64,7 @@ const jsonLdArray = jsonLd
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@screeningclearing" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site).href} />

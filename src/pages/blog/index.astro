@@ -4,15 +4,25 @@ import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Health Screening Guides',
+  description: 'Evidence-based guides on health screening, preventive check-ups, and what adults need to know to stay ahead — reviewed against NHS, CDC, and USPSTF guidelines.',
+  url: 'https://screeningclearing.com/blog',
+  publisher: { '@type': 'Organization', name: 'Screening Clearing', url: 'https://screeningclearing.com' },
+};
 ---
 
 <BaseLayout
-  title="Health Screening Blog"
-  description="Educational articles on health screenings, prevention schedules, and how to stay on top of your check-ups. Evidence-based guides for adults."
+  title="Health Screening Guides for Adults"
+  description="Evidence-based guides on health screening, preventive check-ups, and what adults need to know to stay ahead — reviewed against NHS, CDC, and USPSTF guidelines."
+  jsonLd={blogSchema}
 >
   <div class="max-w-4xl mx-auto px-4 py-16">
-    <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Health Screening Blog</h1>
-    <p class="text-[#94a3b8] mb-12">Educational guides on preventive health check-ups.</p>
+    <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Health Screening Guides for Adults</h1>
+    <p class="text-[#94a3b8] mb-12">Evidence-based guides on preventive health check-ups, screening intervals, and what adults actually need to know.</p>
 
     {posts.length === 0 ? (
       <div class="text-center py-20 text-[#64748b]">

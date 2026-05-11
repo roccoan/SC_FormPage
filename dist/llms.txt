@@ -11,8 +11,14 @@ Health education and app marketing. Content covers preventive health screenings,
 - /: Home — app overview and download links
 - /am-i-due: Interactive screening calculator (2-minute quiz, no data collected)
 - /blog: Educational articles on preventive health
+- /blog/health-screening-guide-adults: Cornerstone guide — health screening by age decade for adults
+- /blog/how-often-colonoscopy: How often adults need a colonoscopy (frequency, intervals, guidelines)
+- /blog/why-over-screening-harmful: Why over-screening causes harm (overdiagnosis, false positives, anxiety)
+- /blog/health-data-privacy-phone: Why health data should stay on device (local-only storage explained)
+- /blog/screening-vs-symptoms: Difference between preventive screening and symptoms needing a doctor
 - /author: Editorial standards and team information
 - /privacy: Privacy policy — data handling for app and website
+- /support: Support and contact information
 - /faq: Frequently asked questions
 
 ## Content policy

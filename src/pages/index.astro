@@ -23,6 +23,15 @@ const appSchema = {
   url: 'https://screeningclearing.com',
 };
 
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Screening Clearing',
+  url: 'https://screeningclearing.com',
+  description: 'Free iOS and Android app for tracking personal health screening schedules.',
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', url: 'https://screeningclearing.com/support' },
+};
+
 const homeFaqs = [
   {
     q: 'What is Screening Clearing?',
@@ -72,7 +81,7 @@ const benefits = [
 <BaseLayout
   title="Screening Clearing"
   description="Never miss a health check-up again. Screening Clearing is a free iOS and Android app that tracks your personal prevention schedule and reminds you when screenings are due."
-  jsonLd={[websiteSchema, appSchema]}
+  jsonLd={[websiteSchema, appSchema, orgSchema]}
 >
   <!-- Hero -->
   <section class="relative overflow-hidden px-4 pt-16 pb-20 md:pt-24 md:pb-28">
@@ -126,6 +135,9 @@ const benefits = [
           </div>
         ))}
       </div>
+      <p class="text-[#64748b] text-sm mt-8 text-center">
+        Not sure which screenings apply to you? <a href="/blog/health-screening-guide-adults" class="text-[#06b6d4] hover:underline">Our adult screening guide</a> breaks it down by decade.
+      </p>
     </div>
   </section>
 

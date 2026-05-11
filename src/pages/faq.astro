@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQSection from '../components/FAQSection.astro';
+import AppCTA from '../components/AppCTA.astro';
 
 const appFaqs = [
   {
@@ -77,11 +78,23 @@ const pricingFaqs = [
     a: 'Subscriptions are managed through your App Store (iOS) or Google Play (Android) account. Go to your device settings → subscriptions to cancel at any time. You retain premium access until the end of the billing period.',
   },
 ];
+const allFaqs = [...appFaqs, ...privacyFaqs, ...screeningFaqs, ...pricingFaqs];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
 ---
 
 <BaseLayout
   title="Frequently Asked Questions"
   description="Answers to common questions about Screening Clearing — the free health screening tracker app for iOS and Android."
+  jsonLd={faqSchema}
 >
   <div class="max-w-3xl mx-auto px-4 py-16">
     <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Frequently Asked Questions</h1>
@@ -91,5 +104,9 @@ const pricingFaqs = [
     <FAQSection items={privacyFaqs} title="Privacy & Data" />
     <FAQSection items={screeningFaqs} title="Health Screenings" />
     <FAQSection items={pricingFaqs} title="Pricing & Premium" />
+
+    <div class="mt-12">
+      <AppCTA />
+    </div>
   </div>
 </BaseLayout>

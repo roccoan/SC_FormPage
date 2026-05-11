@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const lastReviewed = '2026-05-11';
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -8,6 +10,7 @@ const jsonLd = [
     "url": "https://screeningclearing.com/author",
     "name": "About Screening Clearing Editorial",
     "description": "Our mission, editorial process, and how we verify health screening information against NHS, CDC, and USPSTF guidelines.",
+    "dateModified": lastReviewed,
     "publisher": {
       "@type": "Organization",
       "name": "Screening Clearing Editorial",
@@ -21,6 +24,13 @@ const jsonLd = [
     "url": "https://screeningclearing.com",
     "description": "We help individuals stay on track with their preventative health screenings by faithfully reporting public health guidelines from NHS, CDC, and USPSTF.",
     "sameAs": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Screening Clearing Editorial Team",
+    "worksFor": { "@type": "Organization", "name": "Screening Clearing", "url": "https://screeningclearing.com" },
+    "description": "Content team responsible for health screening articles. All content reviewed for alignment with current USPSTF, NHS, WHO, and CDC guidelines."
   }
 ];
 ---
@@ -32,7 +42,8 @@ const jsonLd = [
 >
   <article class="max-w-2xl mx-auto px-4 py-16">
     <h1 class="text-3xl font-black text-[#f1f5f9] mb-4">Screening Clearing Editorial</h1>
-    <p class="text-[#64748b] text-sm mb-10">Health content you can trace to its source.</p>
+    <p class="text-[#64748b] text-sm mb-2">Health content you can trace to its source.</p>
+    <p class="text-[#64748b] text-xs mb-10">Content reviewed for alignment with current USPSTF, NHS, WHO, and CDC guidelines. Last reviewed: <time datetime={lastReviewed}>May 2026</time>.</p>
 
     <div class="prose prose-invert prose-teal max-w-none prose-p:text-[#cbd5e1] prose-headings:text-[#f1f5f9] prose-a:text-[#06b6d4]">
 
