@@ -45,6 +45,11 @@ const images = [
     title: 'Screening vs. Symptoms',
     subtitle: 'Understanding the difference — and when each applies.',
   },
+  {
+    out: 'blog/health-anxiety-and-screening.jpg',
+    title: 'Health Anxiety\nand Screening',
+    subtitle: 'Why knowing what\'s due helps more than worrying.',
+  },
 ];
 
 function buildSvg(title, subtitle) {
