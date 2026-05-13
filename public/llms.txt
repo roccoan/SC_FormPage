@@ -17,6 +17,7 @@ Health education and app marketing. Content covers preventive health screenings,
 - /blog/health-data-privacy-phone: Why health data should stay on device (local-only storage explained)
 - /blog/screening-vs-symptoms: Difference between preventive screening and symptoms needing a doctor
 - /blog/health-anxiety-and-screening: Health anxiety and screening — why knowing what's due reduces worry
+- /blog/how-often-blood-test-adults: How often adults should get a blood test (cholesterol, diabetes, frequency guidance)
 - /author: Editorial standards and team information
 - /privacy: Privacy policy — data handling for app and website
 - /support: Support and contact information
