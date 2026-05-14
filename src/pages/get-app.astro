@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+
+const APP_STORE_URL = import.meta.env.PUBLIC_APP_STORE_URL ?? '';
+const PLAY_STORE_URL = import.meta.env.PUBLIC_PLAY_STORE_URL ?? '';
+const isComingSoon = !APP_STORE_URL;
+---
+
+<BaseLayout
+  title="Get the App — Screening Clearing"
+  description="Download Screening Clearing for iOS or Android."
+  noindex={true}
+>
+  <main class="min-h-screen flex items-center justify-center px-4" style="background:#0a0f1a">
+    <div class="text-center max-w-sm w-full">
+      {!isComingSoon ? (
+        <>
+          <p id="redirect-msg" class="text-[#94a3b8] text-sm mb-6">Taking you to the app store…</p>
+          <p id="fallback-msg" class="hidden text-[#94a3b8] text-sm mb-6">
+            Couldn't detect your device. Choose your store below.
+          </p>
+          <div id="badges" class="hidden flex justify-center">
+            <StoreBadges size="md" />
+          </div>
+        </>
+      ) : (
+        <>
+          <p class="text-[#f1f5f9] font-semibold mb-2">Screening Clearing is coming soon.</p>
+          <p class="text-[#94a3b8] text-sm mb-6">The app isn't available yet — check back soon.</p>
+          <div class="flex justify-center">
+            <StoreBadges size="md" />
+          </div>
+        </>
+      )}
+    </div>
+  </main>
+
+  {!isComingSoon && (
+    <script define:vars={{ APP_STORE_URL, PLAY_STORE_URL }}>
+      const ua = navigator.userAgent;
+      const isIOS =
+        /iPhone|iPod/.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const isAndroid = /Android/.test(ua);
+
+      if (isIOS && APP_STORE_URL) {
+        location.replace(APP_STORE_URL);
+      } else if (isAndroid && PLAY_STORE_URL) {
+        location.replace(PLAY_STORE_URL);
+      } else {
+        // Desktop or undetected — show both badges
+        document.getElementById('redirect-msg')?.classList.add('hidden');
+        document.getElementById('fallback-msg')?.classList.remove('hidden');
+        document.getElementById('badges')?.classList.remove('hidden');
+        document.getElementById('badges')?.classList.add('flex');
+      }
+    </script>
+  )}
+</BaseLayout>

@@ -10,7 +10,7 @@ const APP_STORE_URL = import.meta.env.PUBLIC_APP_STORE_URL ?? '#coming-soon';
 const PLAY_STORE_URL = import.meta.env.PUBLIC_PLAY_STORE_URL ?? '#coming-soon';
 const isComingSoon = !import.meta.env.PUBLIC_APP_STORE_URL;
 
-const qrTarget = isComingSoon ? 'https://screeningclearing.com' : APP_STORE_URL;
+const qrTarget = 'https://screeningclearing.com/get-app';
 const qrSvg = await QRCode.toString(qrTarget, {
   type: 'svg',
   margin: 1,

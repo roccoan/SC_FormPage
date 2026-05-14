@@ -12,6 +12,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
+      filter: (page) => !page.includes('/get-app'),
       serialize(item) {
         const url = item.url;
         if (url === 'https://screeningclearing.com/') return { ...item, changefreq: 'weekly', priority: 1.0 };
