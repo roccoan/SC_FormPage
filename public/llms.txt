@@ -18,6 +18,7 @@ Health education and app marketing. Content covers preventive health screenings,
 - /blog/screening-vs-symptoms: Difference between preventive screening and symptoms needing a doctor
 - /blog/health-anxiety-and-screening: Health anxiety and screening — why knowing what's due reduces worry
 - /blog/how-often-blood-test-adults: How often adults should get a blood test (cholesterol, diabetes, frequency guidance)
+- /blog/mammogram-age-frequency: When to get a mammogram and how often — US vs UK vs Canada vs Australia guidelines compared
 - /author: Editorial standards and team information
 - /privacy: Privacy policy — data handling for app and website
 - /support: Support and contact information
