@@ -21,6 +21,7 @@ Health education and app marketing. Content covers preventive health screenings,
 - /blog/mammogram-age-frequency: When to get a mammogram and how often — US vs UK vs Canada vs Australia guidelines compared
 - /blog/blood-pressure-check-frequency: How often adults should have blood pressure checked — frequency by age, risk level, and country
 - /blog/cervical-cancer-screening-frequency: How often women need cervical screening — Pap vs HPV test, country guidelines, Australia's 2017 programme change
+- /blog/eye-exam-adults-frequency: How often adults should have an eye exam — glaucoma, AMD, diabetic retinopathy, AAO vs USPSTF split explained
 - /author: Editorial standards and team information
 - /privacy: Privacy policy — data handling for app and website
 - /support: Support and contact information
