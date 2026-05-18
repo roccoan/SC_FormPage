@@ -28,14 +28,14 @@ const jsonLd = {
       <div class="text-center mb-10">
         <h1 class="text-5xl font-black text-white mb-4 leading-tight">Am I Due?</h1>
         <p class="text-white/80 text-lg font-medium mb-3 leading-snug">
-          Most adults are behind on at least one health screening — and don't know it.
+          Most adults are behind on at least one health check — and don't know it.
         </p>
         <p class="text-white/65 text-sm mb-6 leading-relaxed max-w-sm mx-auto">
-          Answer 4 quick questions. Find out which preventive checks you may be missing, and how the <strong class="text-white/80">Screening Clearing app</strong> can keep you on track — automatically.
+          Answer 4 quick questions. Find out which health checks you may be missing, and how the <strong class="text-white/80">Screening Clearing app</strong> can keep you on track.
         </p>
         <p class="inline-flex items-center gap-2 text-xs text-white/60 bg-white/8 border border-white/20 rounded-full px-4 py-2 font-medium">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1C8.676 1 6 3.676 6 7v1H4v15h16V8h-2V7c0-3.324-2.676-6-6-6zm0 2c2.276 0 4 1.724 4 4v1H8V7c0-2.276 1.724-4 4-4zm0 9a2 2 0 110 4 2 2 0 010-4z"/></svg>
-          Your answers are never collected or stored — this is a preview of the app
+          Your answers are not collected or stored
         </p>
       </div>
 
@@ -184,10 +184,10 @@ const jsonLd = {
           <p class="text-white/60 text-xs font-semibold uppercase tracking-widest">Your result</p>
           <div class="flex items-baseline justify-center gap-2">
             <span id="due-count" class="text-7xl font-black score-number text-white">0</span>
-            <span class="text-white/60 text-xl font-semibold">screenings</span>
+            <span class="text-white/60 text-xl font-semibold">health checks</span>
           </div>
-          <p id="score-label" class="text-lg font-semibold"></p>
           <p class="text-white/60 text-xs">may be missing from your schedule</p>
+          <p id="score-label" class="text-lg font-semibold"></p>
           <div class="relative inline-block mt-1">
             <button id="info-btn" type="button" aria-label="About these results" aria-expanded="false"
               class="text-white/55 text-xs underline underline-offset-2 hover:text-white/60 transition-colors">
@@ -208,17 +208,22 @@ const jsonLd = {
         </div>
 
         <div class="rounded-2xl overflow-hidden" style="background:rgba(8,145,178,0.15);border:1px solid rgba(8,145,178,0.35)">
-          <div class="flex items-end gap-0">
-            <!-- App screenshot -->
-            <div class="shrink-0 w-36 relative" style="margin-bottom:-4px">
-              <img
-                src="/images/1.png"
-                alt="Screening Clearing app home screen showing overdue exams"
-                class="w-full h-auto object-contain rounded-bl-2xl drop-shadow-xl"
-                width="280"
-                height="560"
-                loading="lazy"
-              />
+          <div class="flex items-center gap-0">
+            <!-- App screenshot — phone frame -->
+            <div class="shrink-0 w-32 relative pl-4 py-4">
+              <div class="relative rounded-[2rem] bg-[#1a1a1a] shadow-2xl shadow-black/60 border border-white/10 overflow-hidden" style="padding:8px">
+                <div class="rounded-[1.5rem] overflow-hidden bg-black" style="aspect-ratio:9/19.5">
+                  <img
+                    src="/images/1.webp"
+                    alt="Screening Clearing app home screen showing overdue exams"
+                    class="w-full h-full object-cover"
+                    width="280"
+                    height="607"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="absolute inset-0 rounded-[2rem] bg-[#0891b2]/10 blur-xl -z-10 scale-110"></div>
             </div>
             <!-- Text + CTAs -->
             <div class="flex-1 p-5 space-y-4">
@@ -622,7 +627,7 @@ const jsonLd = {
       countEl.classList.add('text-red-400');
       label.textContent = 'Some catching up to do.';
       label.className = 'text-lg font-semibold text-red-400';
-      cta.textContent = `You may have ${dueCount} screenings due. The app tracks them all — with reminders.`;
+      cta.textContent = `You may have ${dueCount} health checks due. The app tracks them all — with reminders.`;
     }
 
     const list = document.getElementById('results-list')!;
