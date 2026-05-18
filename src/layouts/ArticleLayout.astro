@@ -89,6 +89,18 @@ const articleJsonLd = {
       <p class="text-[#94a3b8] text-lg">{description}</p>
     </header>
 
+    {image && (
+      <img
+        src={image}
+        alt={imageAlt ?? ''}
+        width="1200"
+        height="630"
+        class="w-full rounded-xl mb-10 object-cover aspect-[1200/630]"
+        loading="eager"
+        decoding="async"
+      />
+    )}
+
     <div class="prose prose-invert prose-teal max-w-none
       prose-headings:font-bold prose-headings:text-[#f1f5f9]
       prose-p:text-[#cbd5e1] prose-p:leading-relaxed

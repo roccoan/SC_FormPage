@@ -22,6 +22,8 @@ Health education and app marketing. Content covers preventive health screenings,
 - /blog/blood-pressure-check-frequency: How often adults should have blood pressure checked — frequency by age, risk level, and country
 - /blog/cervical-cancer-screening-frequency: How often women need cervical screening — Pap vs HPV test, country guidelines, Australia's 2017 programme change
 - /blog/eye-exam-adults-frequency: How often adults should have an eye exam — glaucoma, AMD, diabetic retinopathy, AAO vs USPSTF split explained
+- /blog/skin-cancer-screening-frequency: How often adults need a skin cancer check — no national programme in most countries, Germany exception, who needs annual checks
+- /blog/dental-check-frequency: How often adults need a dental check-up — the "every 6 months" myth debunked, NICE risk-based intervals, oral cancer screening explained
 - /author: Editorial standards and team information
 - /privacy: Privacy policy — data handling for app and website
 - /support: Support and contact information

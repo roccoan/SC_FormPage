@@ -1,0 +1,93 @@
+{
+  "blood-pressure-check-frequency": {
+    "slug": "blood-pressure-check-frequency",
+    "photographer": "Thirdman",
+    "photographer_url": "https://www.pexels.com/@thirdman",
+    "pexels_url": "https://www.pexels.com/photo/a-healthcare-worker-measuring-a-patient-s-blood-pressure-using-a-sphygmomanometer-7659573/",
+    "photo_id": 7659573
+  },
+  "cervical-cancer-screening-frequency": {
+    "slug": "cervical-cancer-screening-frequency",
+    "photographer": "Thirdman",
+    "photographer_url": "https://www.pexels.com/@thirdman",
+    "pexels_url": "https://www.pexels.com/photo/doctor-consulting-a-patient-7659869/",
+    "photo_id": 7659869
+  },
+  "dental-check-frequency": {
+    "slug": "dental-check-frequency",
+    "photographer": "www.kaboompics.com",
+    "photographer_url": "https://www.pexels.com/@karola-g",
+    "pexels_url": "https://www.pexels.com/photo/a-man-at-the-dentists-6627413/",
+    "photo_id": 6627413
+  },
+  "eye-exam-adults-frequency": {
+    "slug": "eye-exam-adults-frequency",
+    "photographer": "AI25.Studio  Studio",
+    "photographer_url": "https://www.pexels.com/@ai25studioai",
+    "pexels_url": "https://www.pexels.com/photo/man-in-optical-trial-frame-6749727/",
+    "photo_id": 6749727
+  },
+  "health-anxiety-and-screening": {
+    "slug": "health-anxiety-and-screening",
+    "photographer": "Kevin  Malik",
+    "photographer_url": "https://www.pexels.com/@kevin-malik",
+    "pexels_url": "https://www.pexels.com/photo/a-woman-meditating-with-a-singing-bowl-9031632/",
+    "photo_id": 9031632
+  },
+  "health-data-privacy-phone": {
+    "slug": "health-data-privacy-phone",
+    "photographer": "Polina Zimmerman",
+    "photographer_url": "https://www.pexels.com/@polina-zimmerman",
+    "pexels_url": "https://www.pexels.com/photo/smartphone-screen-displaying-health-settings-4108167/",
+    "photo_id": 4108167
+  },
+  "health-screening-guide-adults": {
+    "slug": "health-screening-guide-adults",
+    "photographer": "SHVETS production",
+    "photographer_url": "https://www.pexels.com/@shvets-production",
+    "pexels_url": "https://www.pexels.com/photo/man-and-woman-having-a-conversation-8413162/",
+    "photo_id": 8413162
+  },
+  "how-often-blood-test-adults": {
+    "slug": "how-often-blood-test-adults",
+    "photographer": "www.kaboompics.com",
+    "photographer_url": "https://www.pexels.com/@karola-g",
+    "pexels_url": "https://www.pexels.com/photo/hands-of-person-holding-a-glass-test-tube-6629369/",
+    "photo_id": 6629369
+  },
+  "how-often-colonoscopy": {
+    "slug": "how-often-colonoscopy",
+    "photographer": "Los Muertos Crew",
+    "photographer_url": "https://www.pexels.com/@cristian-rojas",
+    "pexels_url": "https://www.pexels.com/photo/doctor-performing-auscultation-on-a-patient-lying-on-the-bed-8460084/",
+    "photo_id": 8460084
+  },
+  "mammogram-age-frequency": {
+    "slug": "mammogram-age-frequency",
+    "photographer": "Leeloo The First",
+    "photographer_url": "https://www.pexels.com/@leeloothefirst",
+    "pexels_url": "https://www.pexels.com/photo/gold-pen-beside-calendar-with-pink-ribbon-on-pink-surface-7805673/",
+    "photo_id": 7805673
+  },
+  "screening-vs-symptoms": {
+    "slug": "screening-vs-symptoms",
+    "photographer": "Tessy Agbonome",
+    "photographer_url": "https://www.pexels.com/@tessy-agbonome-521343232",
+    "pexels_url": "https://www.pexels.com/photo/smiling-woman-holding-a-stethoscope-18828743/",
+    "photo_id": 18828743
+  },
+  "skin-cancer-screening-frequency": {
+    "slug": "skin-cancer-screening-frequency",
+    "photographer": "cottonbro studio",
+    "photographer_url": "https://www.pexels.com/@cottonbro",
+    "pexels_url": "https://www.pexels.com/photo/person-holding-magnifying-glass-with-white-background-5701545/",
+    "photo_id": 5701545
+  },
+  "why-over-screening-harmful": {
+    "slug": "why-over-screening-harmful",
+    "photographer": "cottonbro studio",
+    "photographer_url": "https://www.pexels.com/@cottonbro",
+    "pexels_url": "https://www.pexels.com/photo/a-person-looking-at-a-medical-test-result-7578816/",
+    "photo_id": 7578816
+  }
+}
