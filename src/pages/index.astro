@@ -35,7 +35,7 @@ const orgSchema = {
 const homeFaqs = [
   {
     q: 'What is Screening Clearing?',
-    a: 'Screening Clearing is a free app for iOS and Android that helps you track your personal health screening schedule. It tells you which check-ups are due, lets you log when you had them, and sends reminders so nothing slips through the cracks.',
+    a: "The name says it: you take your list of check-ups — the ones due for your age, the ones your doctor recommended, any exam or test you need to stay on top of — and, one by one, you clear them. Screening Clearing is a free app for iOS and Android that tracks your personal health check-up schedule. It tells you which check-ups are due, lets you log when you had them, and sends reminders so nothing slips through the cracks.",
   },
   {
     q: 'Is Screening Clearing free to use?',
@@ -72,8 +72,8 @@ const benefits = [
   },
   {
     icon: '✅',
-    title: 'Your health history, in one place',
-    desc: "Log what you've done, track what's coming, and build a timeline you actually own.",
+    title: 'Clear them as you go',
+    desc: "Mark each check-up done and watch your list shrink. Build a health history you actually own — no clinic portal, no paperwork.",
   },
 ];
 ---
@@ -97,7 +97,7 @@ const benefits = [
           <span class="text-[#0891b2]">screening.</span>
         </h1>
         <p class="text-[#94a3b8] text-lg leading-relaxed mb-8 max-w-md">
-          Screening Clearing shows you exactly what's overdue, what's coming up, and what you've already done — privately, on your phone. No account needed.
+          Think of it as your health to-do list — the check-ups, tests, and exams that are due at your age or that your doctor has recommended, one by one, cleared. Screening Clearing shows you what's overdue, what's coming up, and what you've already ticked off. Privately, on your phone.
         </p>
         <div class="flex flex-wrap items-center gap-4 mb-6">
           <a href="/am-i-due"
@@ -155,7 +155,7 @@ const benefits = [
         {[
           { step: '1', title: 'Set up your profile', desc: 'Enter your age and basic details. The app builds a personalised screening schedule — nothing generic, nothing irrelevant.' },
           { step: '2', title: "See what's due", desc: "Most people are surprised. The overdue pile is bigger than they thought. Now you can see the full picture at once." },
-          { step: '3', title: 'Log and track', desc: "Mark check-ups as done, note upcoming appointments, and build a health timeline you actually own." },
+          { step: '3', title: 'Log and track', desc: "Mark them done. Clear them off. Build a health history you actually own — on your phone, privately, forever." },
         ].map((s) => (
           <div class="flex flex-col items-center text-center">
             <div class="w-12 h-12 rounded-full bg-[#0e7490] text-white font-black text-xl flex items-center justify-center mb-4">{s.step}</div>
@@ -173,8 +173,8 @@ const benefits = [
   <!-- CTA Banner -->
   <section class="py-16 border-t border-[#1e293b]">
     <div class="max-w-2xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-black text-[#f1f5f9] mb-4">Find out which check-ups you're behind on.</h2>
-      <p class="text-[#94a3b8] mb-8">Free to download. No account. Two minutes to set up. Your data never leaves your phone.</p>
+      <h2 class="text-3xl font-black text-[#f1f5f9] mb-4">Start clearing your health to-do list.</h2>
+      <p class="text-[#94a3b8] mb-8">Free to download. No account. Two minutes to set up. Your check-ups, cleared.</p>
       <StoreBadges class="justify-center" size="lg" />
     </div>
   </section>
